@@ -511,7 +511,6 @@
                 android:text="@string/located_in_the_very_heart_of_vernazza_in_via_roma_24_along_the_main_road_just_a_few_meters_from_the_train_station_and_the_main_square_to_your_left_going_downhill_it_s_so_easy_to_find_us_if_you_want_to_meet_us_plan_special_event_or_get_more_info_about_our_services_come_visit_us_this_is_one_more_reason_to_trust_us_we_are_right_there_in_the_very_heart_of_the_cinque_terre"
                 android:textColor="@color/grey_opcy"
                 android:textSize="@dimen/_10ssp" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
