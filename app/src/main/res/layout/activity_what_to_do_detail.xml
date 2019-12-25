@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.WhatToDoDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include layout="@layout/app_bar1"/>
+
+        <ImageView
+            android:id="@+id/iv_what_to_do_detail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/dummy" />
+
+        <TextView
+            android:id="@+id/tv_what_to_do_detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:text=" Title"
+            android:textColor="@color/dark_grey"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold" />
+
+        <WebView
+            android:id="@+id/tv_what_to_do_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:text="hdf djfdh jfjhfdh jfjhbf jhfjhf jhf fdjhjf jhfjhf jhfdjhfd jdfd jhfjhfdn fdjhfjhfd jhf fdnjhfd jhfdfd jhf fdjhjhhf jhf fdfdhjh fdjhnjhhjfd jhfd  fdjhfdn fd fjhf f jhfd fdjhjhfd fdjhfd fdjhf fd fdjhjfd fdj ffdjhfd fdh fjh fdjh mfdj fj jkjknbf djhm fdjhjh fjhfd fdjhjhfdd iue huu ugiod jhkihud ewoyur biygu"
+            android:textSize="@dimen/_12ssp" />
+
+    </LinearLayout>
+
+
+</ScrollView>

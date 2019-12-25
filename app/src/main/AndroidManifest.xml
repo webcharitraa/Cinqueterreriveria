@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cinqueterreriveria">
+
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/app_icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activities.ServiceDetailActivity"></activity>
+        <activity android:name=".activities.LuxuryCollectionsActivity" />
+        <activity android:name=".activities.HowToReachDetailActivity" />
+        <activity android:name=".activities.WhatToDoDetailActivity" />
+        <activity android:name=".activities.MyAccountActivity" />
+        <activity android:name=".activities.ContactUsActivity" />
+        <activity android:name=".activities.ForgetPasswordActivity" />
+        <activity android:name=".activities.BookingSuccessfulActivity" />
+        <activity android:name=".activities.PaymentMethodActivity" />
+        <activity android:name=".activities.PaymentTypeActivity" />
+        <activity android:name=".activities.SingleBoatTourActivity" />
+        <activity android:name=".activities.SingleBlogDetailActivity" />
+        <activity android:name=".activities.BlogsActivity" />
+        <activity android:name=".activities.SinglePlaceDetailActivity" />
+        <activity android:name=".activities.PlaceListActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAAYi6itRZ0rPgI76O3I83BhhzZHIgMwPg" />
+
+        <activity android:name=".activities.DashboardActivity" />
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.WalkThroughActivity" />
+        <activity android:name=".Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

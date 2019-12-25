@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Property Type:"
+        android:textColor="@color/dark_grey"
+        android:textSize="@dimen/_12ssp"/>
+
+    <TextView
+        android:layout_toEndOf="@+id/tv_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Villa"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_grey"/>
+
+</RelativeLayout>

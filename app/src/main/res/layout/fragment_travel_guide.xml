@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none"
+    tools:context=".fragments.BlogDetailAccomodationFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/dummy" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_alignParentBottom="true"
+
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:background="@drawable/solid_white_opac_rect"
+                android:gravity="center"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:text="Cinque Terre Travel Guide"
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/_12ssp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10ssp"
+            android:text="@string/the_plus_of_a_travel_insurance"
+            android:textAllCaps="true"
+            android:textColor="@color/dark_grey"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="@string/all_you_need_to_know_about_the_cinque_terre_true_and_fine_advice_written_and_explained_by_the_locals_no_second_hand_news_but_facts_the_real_practical_truth_to_live_the_place_as_a_local_and_manage_through_trains_car_parking_spots_traditions_festivities_restaurants_and_food_all_your_questions_will_find_and_answer_just_surf_through_our_pages_but_if_not_send_us_a_mail_and_get_further_advice"
+            android:textColor="@color/light_black"
+            android:textSize="@dimen/_11ssp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_blogs_travel_guide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:nestedScrollingEnabled="false" />
+
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>
+

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:fillViewport="true"
+
+    tools:context=".activities.BlogsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+      <include layout="@layout/app_bar"/>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/blog_tab"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_margin="@dimen/_10sdp"
+            app:tabMode="scrollable"
+            app:tabInlineLabel="false"
+            app:tabTextColor="@color/white_medium_opacity"
+            app:tabIndicatorHeight="0dp"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+            app:tabSelectedTextColor="@color/white_medium_opacity"
+            app:tabBackground="@drawable/tab_selection"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager_blog_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_blog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+        <ImageView
+            android:contentDescription="@null"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            android:src="@drawable/dummy"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/the_plus_of_a_travel_insurance"
+            android:layout_margin="@dimen/_10ssp"
+            android:textColor="@color/dark_grey"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textSize="@dimen/_14ssp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all_you_need_to_know_about_the_cinque_terre_true_and_fine_advice_written_and_explained_by_the_locals_no_second_hand_news_but_facts_the_real_practical_truth_to_live_the_place_as_a_local_and_manage_through_trains_car_parking_spots_traditions_festivities_restaurants_and_food_all_your_questions_will_find_and_answer_just_surf_through_our_pages_but_if_not_send_us_a_mail_and_get_further_advice"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:textColor="@color/light_black"
+            android:textSize="@dimen/_11ssp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_all_blogs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_marginTop="@dimen/_20sdp"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

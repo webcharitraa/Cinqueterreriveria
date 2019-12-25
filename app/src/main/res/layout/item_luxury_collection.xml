@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/_10sdp"
+    android:layout_height="wrap_content">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_luxury_collection"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        android:src="@drawable/dummy"
+        android:scaleType="fitXY"
+        app:riv_corner_radius="5dip"
+        app:riv_mutate_background="true"
+        app:riv_oval="false"
+        app:riv_tile_mode="repeat" />
+
+    <TextView
+        android:id="@+id/tv_luxury_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Montesso"
+        android:textColor="@color/dark_grey"
+        android:textStyle="bold"
+        android:textSize="@dimen/_16ssp"
+        android:layout_margin="@dimen/_10sdp" />
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Montesso"
+        android:textColor="@color/dark_grey"
+        android:textStyle="bold"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginStart="@dimen/_10sdp" />
+
+    <TextView
+        android:id="@+id/tv_descrip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Montesso"
+        android:textColor="@color/grey_opcy"
+        android:textStyle="bold"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginStart="@dimen/_10sdp" />
+
+    <Button
+        android:id="@+id/bt_book"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@color/dark_grey"
+        android:gravity="center"
+        android:text="₤ 356 Book Now"
+        android:textColor="@color/white" />
+
+</LinearLayout>

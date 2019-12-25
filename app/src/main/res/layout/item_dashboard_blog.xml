@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/_160sdp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:orientation="vertical">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_dashboard_blog"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_140sdp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dummy"
+        app:riv_corner_radius="5dip"
+        app:riv_mutate_background="true"
+        app:riv_oval="false"
+        app:riv_tile_mode="repeat" />
+
+    <TextView
+        android:id="@+id/tv_dashboard_blog_title"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:lines="2"
+
+        android:text="Do not miss our exclusive Promos"
+        android:textColor="@color/orange"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_dashboard_blog_description"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:lines="1"
+        android:text="Do not miss our exclusive Promos ghdg du8e hduid bdhyhjd dhhd ddhd"
+        android:textSize="@dimen/_10ssp"
+        />
+
+    <Button
+        android:id="@+id/bt_blog_detail"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@color/dark_grey"
+        android:gravity="center"
+        android:text="@string/read_more"
+        android:textColor="@color/white" />
+
+</LinearLayout>

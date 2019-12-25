@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+android:layout_margin="@dimen/_10sdp"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/the_first_move"
+        android:textColor="@color/dark_grey"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_18ssp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="a week-end break in Vernazza"
+        android:textColor="@color/dark_grey"
+        android:layout_gravity="center"
+
+        android:textSize="@dimen/_12ssp"/>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_160sdp"
+        android:contentDescription="@null"
+        android:scaleType="fitXY"
+
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/dummy"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
