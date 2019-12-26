@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/refresh"
@@ -29,13 +30,587 @@
             android:layout_height="match_parent"
             tools:context=".activities.SinglePlaceDetailActivity">
 
-            <RelativeLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmer_single_place_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_260sdp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_260sdp"
+                                    android:background="@color/light_grey" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginBottom="@dimen/_40sdp"
+                                    android:background="@color/white"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="horizontal" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginTop="@dimen/_240sdp"
+                                    android:background="@drawable/solid_white_top_corners"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_20sdp"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:text="Villa Tanca Luxyury Collection"
+                                        android:textColor="@color/light_grey"
+                                        android:textSize="@dimen/_18ssp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_20sdp"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:layout_marginEnd="@dimen/_20sdp"
+                                        android:text="Introducing this property tanca Villa is enhanting 4 villa bedroom with.."
+                                        android:textColor="@color/light_grey"
+                                        android:textSize="@dimen/_10ssp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_10sdp"
+
+                                        android:orientation="horizontal">
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginStart="@dimen/_20sdp"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <RelativeLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="@dimen/_21sdp">
+
+                                                <TextView
+                                                    android:id="@+id/tv_amount1"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="€240"
+                                                    android:textColor="@color/light_grey"
+                                                    android:textSize="@dimen/_16ssp"
+                                                    android:textStyle="bold" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignParentBottom="true"
+                                                    android:layout_toEndOf="@+id/tv_amount1"
+                                                    android:text="/night"
+                                                    android:textColor="@color/light_grey" />
+                                            </RelativeLayout>
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/starting_from_price"
+                                                android:textColor="@color/light_grey"
+                                                android:textSize="@dimen/_10ssp" />
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginEnd="@dimen/_20sdp"
+                                            android:layout_weight="1"
+                                            android:gravity="end"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Instant Bookable"
+                                                android:textAllCaps="true"
+                                                android:textColor="@color/light_grey"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerInParent="true"
+                                                android:text="Citra Code: Id 977867 Lt 7867"
+                                                android:textAllCaps="true"
+                                                android:textColor="@color/light_grey"
+                                                android:textSize="@dimen/_10ssp" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="@dimen/_5sdp"
+                                                android:text="Eg: ID 0754 6547 766"
+                                                android:textColor="@color/grey_opcy"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:visibility="gone" />
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_15sdp"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:layout_marginBottom="@dimen/_8sdp"
+                                        android:orientation="horizontal">
+
+                                        <RelativeLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1">
+
+                                            <ImageView
+                                                android:id="@+id/iv_bath1"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerVertical="true"
+                                                android:layout_marginTop="@dimen/_3sdp"
+                                                android:src="@drawable/ic_bathtub_with_opened_shower"
+                                                android:tint="@color/light_grey" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerVertical="true"
+                                                android:layout_marginStart="@dimen/_5sdp"
+                                                android:layout_toEndOf="@+id/iv_bath1"
+                                                android:text="Bathrooms(1)"
+                                                android:textColor="@color/light_grey"
+                                                android:textSize="@dimen/_10ssp" />
+
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:gravity="center">
+
+                                            <ImageView
+                                                android:id="@+id/iv_group1"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerVertical="true"
+                                                android:layout_marginTop="@dimen/_3sdp"
+                                                android:src="@drawable/ic_group"
+                                                android:tint="@color/light_grey" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerVertical="true"
+                                                android:layout_marginStart="@dimen/_5sdp"
+
+                                                android:layout_toEndOf="@+id/iv_group1"
+                                                android:text="Guests(5)"
+                                                android:textColor="@color/light_grey"
+                                                android:textSize="@dimen/_10ssp" />
+
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="@dimen/_10sdp"
+                                            android:layout_weight="1"
+                                            android:gravity="end">
+
+                                            <ImageView
+                                                android:id="@+id/iv_car1"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerVertical="true"
+
+                                                android:layout_marginTop="@dimen/_3sdp"
+                                                android:src="@drawable/ic_double_king_size_bed" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerVertical="true"
+                                                android:layout_marginStart="@dimen/_5sdp"
+
+                                                android:layout_toEndOf="@+id/iv_car1"
+                                                android:text="Rooms(2)"
+                                                android:textColor="@color/dark_grey"
+                                                android:textSize="@dimen/_10ssp" />
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:layout_marginBottom="@dimen/_5sdp"
+                                        android:background="@color/grey_opcy" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:orientation="horizontal">
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginStart="@dimen/_20sdp"
+                                            android:layout_weight="1"
+                                            android:orientation="horizontal">
+
+                                            <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:contentDescription="@null"
+                                                android:tint="@color/light_grey"
+                                                android:src="@drawable/ic_wiping_swipe_for_floors" />
+
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_marginStart="@dimen/_5sdp"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Cleaning"
+                                                    android:textColor="@color/light_grey"
+                                                    android:textSize="@dimen/_12ssp"
+                                                    android:textStyle="bold" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Fee: 60 EUR per stay"
+                                                    android:textAllCaps="true"
+                                                    android:textColor="@color/light_grey"
+                                                    android:textSize="@dimen/_8ssp" />
+                                            </LinearLayout>
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginStart="@dimen/_20sdp"
+                                            android:layout_weight="1"
+                                            android:orientation="horizontal">
+
+                                            <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:contentDescription="@null"
+                                                android:tint="@color/light_grey"
+                                                android:src="@drawable/ic_tax" />
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_marginStart="@dimen/_5sdp"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="city tax"
+                                                    android:textColor="@color/light_grey"
+                                                    android:textSize="@dimen/_12ssp"
+                                                    android:textStyle="bold" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Fee: 60 EUR per stay"
+                                                    android:textAllCaps="true"
+                                                    android:textColor="@color/light_grey"
+                                                    android:textSize="@dimen/_8ssp" />
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_15sdp"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="@dimen/_20sdp"
+                                            android:text="Rating"
+                                            android:textColor="@color/light_grey"
+                                            android:textStyle="bold" />
+
+                                        <RatingBar
+                                            style="@style/CustomRatingBar"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="@dimen/_5sdp"
+                                            android:isIndicator="true"
+                                            android:numStars="5"
+                                            android:progressTint="@color/light_grey"
+                                            android:progressDrawable="@drawable/rating_layerlist"
+                                            android:rating="2"
+                                            android:stepSize=".5" />
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_20sdp"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:layout_marginEnd="@dimen/_20sdp"
+                                        android:textColor="@color/light_grey"
+                                        android:text="hdf djfdh jfjhfdh jfjhbf jhfjhf jhf fdjhjf jhfjhf jhfdjhfd jdfd jhfjhfdn fdjhfjhfd jhf fdnjhfd jhfdfd jhf fdjhjhhf jhf fdfdhjh fdjhnjhhjfd jhfd  fdjhfdn fd fjhf f jhfd fdjhjhfd fdjhfd fdjhf fd fdjhjfd fdj ffdjhfd fdh fjh fdjh mfdj fj jkjknbf djhm fdjhjh fjhfd fdjhjhfdd iue huu ugiod jhkihud ewoyur biygu"
+                                        android:textSize="@dimen/_10ssp" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_marginStart="@dimen/_40sdp"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:layout_marginEnd="@dimen/_40sdp"
+                                        android:background="@color/grey_opcy"
+                                        android:visibility="gone" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="@dimen/_40sdp"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:layout_marginEnd="@dimen/_40sdp"
+                                        android:gravity="center"
+                                        android:text="La Casa Del Gigante Luxyury Collection Villa "
+                                        android:textColor="@color/dark_grey"
+                                        android:textSize="@dimen/_18ssp"
+                                        android:textStyle="bold"
+                                        android:visibility="gone" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0.5dp"
+                                        android:layout_marginStart="@dimen/_40sdp"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:layout_marginEnd="@dimen/_40sdp"
+                                        android:background="@color/grey_opcy"
+                                        android:visibility="gone" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:layout_marginBottom="@dimen/_10sdp"
+                                        android:drawableStart="@drawable/ic_placeholder"
+                                        android:textColor="@color/light_grey"
+                                        android:drawablePadding="@dimen/_3sdp"
+                                        android:drawableTint="@color/orange"
+                                        android:text="Montesso" />
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_20sdp"
+                                        android:layout_marginTop="@dimen/_20sdp"
+                                        android:layout_marginEnd="@dimen/_20sdp"
+                                        android:layout_marginBottom="@dimen/_30sdp"
+                                        android:visibility="gone" />
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:background="@color/grey_opcy"
+                                    android:visibility="gone" />
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:background="#3ABBDEFB"
+                                    android:visibility="gone">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:text="Citra Code: Id 977867 Lt 7867"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/grey_opcy"
+                                        android:textSize="@dimen/_12ssp" />
+                                </RelativeLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:background="@color/grey_opcy" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_50sdp"
+                                    android:background="@color/light_grey"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_20sdp"
+                                        android:layout_marginTop="@dimen/_15sdp"
+                                        android:text="@string/details"
+                                        android:textColor="@color/dark_grey"
+                                        android:textSize="@dimen/_16ssp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:background="@color/grey_opcy" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_20sdp"
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:layout_marginEnd="@dimen/_20sdp"
+                                    android:layout_marginBottom="@dimen/_15sdp"
+                                    android:background="@color/white"
+                                    android:orientation="vertical">
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:background="@color/grey_opcy" />
+
+                                <com.google.android.material.tabs.TabLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_40sdp"
+                                    app:tabIndicatorColor="@color/orange"
+                                    app:tabIndicatorHeight="@dimen/_2sdp"
+                                    app:tabMode="scrollable"
+                                    app:tabSelectedTextColor="@color/dark_grey"
+                                    app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:background="@color/grey_opcy" />
+
+                                <com.cinqueterreriveria.adapters.NonSwipeableViewPager
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_20sdp" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:background="@color/grey_opcy" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    android:background="@color/light_grey"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_20sdp"
+                                        android:layout_marginTop="@dimen/_20sdp"
+                                        android:layout_marginEnd="@dimen/_20sdp"
+                                        android:text="Disclaimer"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/dark_grey"
+                                        android:textSize="@dimen/_16ssp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_20sdp"
+                                        android:layout_marginTop="@dimen/_20sdp"
+                                        android:layout_marginEnd="@dimen/_20sdp"
+                                        android:layout_marginBottom="@dimen/_20sdp"
+                                        android:text="Please note : that all rates and prices are subject to change and for a final booking quote you should check the rate shown after clicking on CHECK THE RATES button to the right. Week-end, short stay, special holidays supplements and long stay reductions might be applied automatically."
+                                        android:textColor="@color/dark_grey"
+                                        android:textSize="@dimen/_10ssp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_20sdp"
+                                        android:layout_marginBottom="@dimen/_20sdp"
+                                        android:text="Location"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/dark_grey"
+                                        android:textSize="@dimen/_16ssp" />
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </com.facebook.shimmer.ShimmerFrameLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_single_detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
                     <RelativeLayout
@@ -108,28 +683,30 @@
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_marginStart="@dimen/_20sdp"
-                                        android:layout_weight="1"
+                                        android:layout_weight="0.7"
                                         android:orientation="vertical">
 
                                         <RelativeLayout
                                             android:layout_width="wrap_content"
                                             android:layout_height="@dimen/_21sdp">
-                                        <TextView
-                                            android:id="@+id/tv_amount"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="€240"
-                                            android:textColor="@color/dark_grey"
-                                            android:textSize="@dimen/_16ssp"
-                                            android:textStyle="bold" />
 
                                             <TextView
-                                                android:layout_toEndOf="@+id/tv_amount"
+                                                android:id="@+id/tv_amount"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:text="/night"
-                                                android:layout_alignParentBottom="true"/>
+                                                android:text="€240"
+                                                android:textColor="@color/dark_grey"
+                                                android:textSize="@dimen/_16ssp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentBottom="true"
+                                                android:layout_toEndOf="@+id/tv_amount"
+                                                android:text="/night" />
                                         </RelativeLayout>
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -164,14 +741,15 @@
                                             android:textAllCaps="true"
                                             android:textColor="@color/grey_opcy"
                                             android:textSize="@dimen/_10ssp" />
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="@dimen/_5sdp"
                                             android:text="Eg: ID 0754 6547 766"
-                                            android:visibility="gone"
                                             android:textColor="@color/grey_opcy"
-                                            android:textSize="@dimen/_10ssp" />
+                                            android:textSize="@dimen/_10ssp"
+                                            android:visibility="gone" />
                                     </LinearLayout>
                                 </LinearLayout>
 
@@ -179,46 +757,47 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/_5sdp"
                                     android:layout_marginStart="@dimen/_15sdp"
-                                    android:orientation="horizontal"
-                                    android:layout_marginBottom="@dimen/_8sdp">
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:layout_marginBottom="@dimen/_8sdp"
+                                    android:orientation="horizontal">
 
                                     <RelativeLayout
                                         android:layout_width="0dp"
-                                        android:layout_weight="1"
                                         android:layout_height="wrap_content"
-                                       >
-                                    <ImageView
-                                        android:id="@+id/iv_bath"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                       android:layout_centerVertical="true"
+                                        android:layout_weight="1">
 
-                                        android:layout_marginTop="@dimen/_3sdp"
-                                        android:src="@drawable/ic_bathtub_with_opened_shower" />
+                                        <ImageView
+                                            android:id="@+id/iv_bath"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerVertical="true"
+
+                                            android:layout_marginTop="@dimen/_3sdp"
+                                            android:src="@drawable/ic_bathtub_with_opened_shower" />
 
                                         <TextView
                                             android:id="@+id/tv_bathroom"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="Bathrooms(1)"
-                                            android:layout_marginStart="@dimen/_5sdp"
                                             android:layout_centerVertical="true"
+                                            android:layout_marginStart="@dimen/_5sdp"
                                             android:layout_toEndOf="@+id/iv_bath"
-                                            android:textSize="@dimen/_10ssp"
-                                            android:textColor="@color/dark_grey"/>
+                                            android:text="Bathrooms(1)"
+                                            android:textColor="@color/dark_grey"
+                                            android:textSize="@dimen/_10ssp" />
 
 
                                     </RelativeLayout>
+
                                     <RelativeLayout
 
                                         android:layout_width="0dp"
-                                        android:layout_weight="1"
-                                        android:layout_gravity="center"
-                                        android:gravity="center"
                                         android:layout_height="wrap_content"
-                                        >
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
                                         <ImageView
                                             android:id="@+id/iv_group"
                                             android:layout_width="wrap_content"
@@ -232,24 +811,24 @@
                                             android:id="@+id/tv_guest"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="Guests(5)"
-                                            android:textSize="@dimen/_10ssp"
-
-                                            android:layout_marginStart="@dimen/_5sdp"
                                             android:layout_centerVertical="true"
+                                            android:layout_marginStart="@dimen/_5sdp"
+
                                             android:layout_toEndOf="@+id/iv_group"
-                                            android:textColor="@color/dark_grey"/>
+                                            android:text="Guests(5)"
+                                            android:textColor="@color/dark_grey"
+                                            android:textSize="@dimen/_10ssp" />
 
 
                                     </RelativeLayout>
+
                                     <RelativeLayout
 
                                         android:layout_width="0dp"
-                                        android:layout_weight="1"
-                                        android:gravity="end"
-                                        android:layout_marginEnd="@dimen/_10sdp"
                                         android:layout_height="wrap_content"
-                                        >
+                                        android:layout_marginEnd="@dimen/_10sdp"
+                                        android:layout_weight="1"
+                                        android:gravity="end">
 
                                         <ImageView
                                             android:id="@+id/iv_car"
@@ -264,16 +843,17 @@
                                             android:id="@+id/tv_room"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="Rooms(2)"
-                                            android:textSize="@dimen/_10ssp"
-
-                                            android:layout_marginStart="@dimen/_5sdp"
                                             android:layout_centerVertical="true"
+                                            android:layout_marginStart="@dimen/_5sdp"
+
                                             android:layout_toEndOf="@+id/iv_car"
-                                            android:textColor="@color/dark_grey"/>
+                                            android:text="Rooms(2)"
+                                            android:textColor="@color/dark_grey"
+                                            android:textSize="@dimen/_10ssp" />
                                     </RelativeLayout>
 
                                 </LinearLayout>
+
                                 <View
                                     android:layout_width="match_parent"
                                     android:layout_height="0.5dp"
@@ -395,7 +975,7 @@
                                 </LinearLayout>
 
                                 <TextView
-android:id="@+id/tv_description"
+                                    android:id="@+id/tv_description"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/_20sdp"
@@ -410,8 +990,8 @@ android:id="@+id/tv_description"
                                     android:layout_marginStart="@dimen/_40sdp"
                                     android:layout_marginTop="@dimen/_10sdp"
                                     android:layout_marginEnd="@dimen/_40sdp"
-                                    android:visibility="gone"
-                                    android:background="@color/grey_opcy" />
+                                    android:background="@color/grey_opcy"
+                                    android:visibility="gone" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -421,11 +1001,11 @@ android:id="@+id/tv_description"
                                     android:layout_marginTop="@dimen/_5sdp"
                                     android:layout_marginEnd="@dimen/_40sdp"
                                     android:gravity="center"
-                                    android:visibility="gone"
                                     android:text="La Casa Del Gigante Luxyury Collection Villa "
                                     android:textColor="@color/dark_grey"
                                     android:textSize="@dimen/_18ssp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
 
                                 <View
                                     android:layout_width="match_parent"
@@ -433,8 +1013,8 @@ android:id="@+id/tv_description"
                                     android:layout_marginStart="@dimen/_40sdp"
                                     android:layout_marginTop="@dimen/_5sdp"
                                     android:layout_marginEnd="@dimen/_40sdp"
-                                    android:visibility="gone"
-                                    android:background="@color/grey_opcy" />
+                                    android:background="@color/grey_opcy"
+                                    android:visibility="gone" />
 
                                 <TextView
                                     android:id="@+id/tv_single_place_location"
@@ -442,10 +1022,10 @@ android:id="@+id/tv_description"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_marginTop="@dimen/_5sdp"
+                                    android:layout_marginBottom="@dimen/_10sdp"
                                     android:drawableStart="@drawable/ic_placeholder"
                                     android:drawablePadding="@dimen/_3sdp"
                                     android:drawableTint="@color/orange"
-                                    android:layout_marginBottom="@dimen/_10sdp"
                                     android:text="Montesso" />
 
                                 <androidx.recyclerview.widget.RecyclerView
@@ -455,21 +1035,21 @@ android:id="@+id/tv_description"
                                     android:layout_marginStart="@dimen/_20sdp"
                                     android:layout_marginTop="@dimen/_20sdp"
                                     android:layout_marginEnd="@dimen/_20sdp"
-                                    android:visibility="gone"
-                                    android:layout_marginBottom="@dimen/_30sdp" />
+                                    android:layout_marginBottom="@dimen/_30sdp"
+                                    android:visibility="gone" />
                             </LinearLayout>
 
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="0.5dp"
-                                android:visibility="gone"
-                                android:background="@color/grey_opcy" />
+                                android:background="@color/grey_opcy"
+                                android:visibility="gone" />
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_40sdp"
-                                android:visibility="gone"
-                                android:background="#3ABBDEFB">
+                                android:background="#3ABBDEFB"
+                                android:visibility="gone">
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -607,7 +1187,7 @@ android:id="@+id/tv_description"
                         </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
-            </RelativeLayout>
+            </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </RelativeLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

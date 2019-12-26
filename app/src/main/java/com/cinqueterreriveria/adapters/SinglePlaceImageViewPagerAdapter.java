@@ -47,7 +47,7 @@ public class SinglePlaceImageViewPagerAdapter extends PagerAdapter {
 
     @NonNull
     @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.item_single_place_detail_slider_images, container, false);
         ImageView iv_single_page_images = view.findViewById(R.id.iv_single_page_images);
@@ -68,7 +68,14 @@ public class SinglePlaceImageViewPagerAdapter extends PagerAdapter {
                 final AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
                 View view2 = LayoutInflater.from(context).inflate(R.layout.popup_image, null);
                 ImageView iv_cancel_image = view2.findViewById(R.id.iv_cancel_image);
+                ImageView iv_single_place_image = view2.findViewById(R.id.iv_single_place_image);
                 builder2.setView(view2);
+
+                RequestOptions simpleOptions = new RequestOptions()
+                        .centerCrop()
+
+                        .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+                Glide.with(context).load(images.get(position)).apply(simpleOptions).into(iv_single_place_image);
 
 
                 iv_cancel_image.setOnClickListener(new View.OnClickListener() {

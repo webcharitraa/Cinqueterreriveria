@@ -1,6 +1,8 @@
 package com.cinqueterreriveria.activities;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +30,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -46,6 +50,7 @@ import com.cinqueterreriveria.apis.ApiConstents;
 import com.cinqueterreriveria.apis.Rest;
 import com.cinqueterreriveria.common.MySpannable;
 import com.cinqueterreriveria.models.SinglePlaceDetailModel;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -65,9 +70,10 @@ import retrofit2.Response;
 @SuppressWarnings("ALL")
 public class SinglePlaceDetailActivity extends AppCompatActivity implements OnMapReadyCallback, View.OnClickListener {
 
-    LinearLayout single_pager_dots;
+    LinearLayout single_pager_dots, ll_single_detail;
     Context context = this;
     ViewPager single_place_viewPager;
+    ShimmerFrameLayout shimmer_single_place_detail;
     SwipeRefreshLayout refresh;
     int[] images = {R.drawable.dummy, R.drawable.dummy, R.drawable.dummy};
     private ImageView[] ivArrayDotsPager;
@@ -76,12 +82,14 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements OnMa
     FloatingActionButton fab;
     RecyclerView rv_collections, rv_details;
     GoogleMap mMap;
+    String date;
     AlertDialog dialog2;
     RatingBar ratingBar;
-    TextView tv_single_place_title,tv_amount,tv_citra_code,tv_bathroom,tv_guest,tv_room,tv_description,tv_single_place_location;
+    TextView tv_single_place_title, tv_amount, tv_citra_code, tv_bathroom, tv_guest, tv_room, tv_description, tv_single_place_location;
     Intent intent;
     RelativeLayout rl_single_place, rl_top;
     String groups[] = {"1 Guests", "2 Guests", "3 Guests", "4 Guests", "5 Guests"};
+    String status;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -117,6 +125,8 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements OnMa
         tv_room = findViewById(R.id.tv_room);
         tv_description = findViewById(R.id.tv_description);
         tv_single_place_location = findViewById(R.id.tv_single_place_location);
+        ll_single_detail = findViewById(R.id.ll_single_detail);
+        shimmer_single_place_detail = findViewById(R.id.shimmer_single_place_detail);
 
         fab = findViewById(R.id.fab);
 
@@ -200,7 +210,6 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements OnMa
         }
     }
 
-
     public static void makeTextViewResizable(final TextView tv, final int maxLine, final String expandText, final boolean viewMore) {
 
         if (tv.getTag() == null) {
@@ -251,7 +260,7 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements OnMa
         SpannableStringBuilder ssb = new SpannableStringBuilder(strSpanned);
 
         if (str.contains(spanableText)) {
-            ssb.setSpan(new MySpannable(false){
+            ssb.setSpan(new MySpannable(false) {
                 @Override
                 public void onClick(View widget) {
                     if (viewMore) {
@@ -300,13 +309,84 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements OnMa
                 ImageView iv_cancel_filter = view2.findViewById(R.id.iv_cancel_filter);
                 Spinner deal_group_spinner = view2.findViewById(R.id.deal_group_spinner);
                 Button bt_search_deal = view2.findViewById(R.id.bt_search_deal);
+                final CalendarView calender_filter = view2.findViewById(R.id.calender_filter);
+                final LinearLayout ll_calender = view2.findViewById(R.id.ll_calender);
+                final RelativeLayout rl_dia = view2.findViewById(R.id.rl_dia);
+                final RelativeLayout rl_popup = view2.findViewById(R.id.rl_popup);
+                final TextView et_check_in = view2.findViewById(R.id.et_check_in);
+                final TextView tv_check_out = view2.findViewById(R.id.tv_check_out);
                 builder2.setView(view2);
 
+                calender_filter.setMinDate(System. currentTimeMillis() - 1000);
+
+                calender_filter.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+                    @Override
+                    public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
+                        date = day + "-" + month + "-" + year;
+                        if (status.equals("check_in"))
+                        {
+                            et_check_in.setText(date);
+
+                        }
+                        if (status.equals("check_out"))
+                        {
+                            tv_check_out.setText(date);
+
+                        }
+                        if(!et_check_in.getText().toString().equals(""))
+                        {
+                            ll_calender.setVisibility(View.GONE);
+                        }
+                    }
+                });
+                rl_popup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (ll_calender.getVisibility() == View.VISIBLE)
+                        {
+                            ll_calender.setVisibility(View.GONE);
+                        }
+                    }
+                });
+
+                et_check_in.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        setMargins(rl_dia, 0, 55, 0, 0);
+
+                       /* LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        );
+                        params.setMargins(0, 45, 0, 0);
+                        rl_dia.setLayoutParams(params);*/
+                        if (ll_calender.getVisibility() == View.GONE) {
+                            ll_calender.setVisibility(View.VISIBLE);
+                            status="check_in";
+                        }
+                    }
+                });
+                tv_check_out.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        setMargins(rl_dia, 0, 55, 0, 0);
+
+                       /* LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        );
+                        params.setMargins(0, 45, 0, 0);
+                        rl_dia.setLayoutParams(params);*/
+                        if (ll_calender.getVisibility() == View.GONE) {
+                            ll_calender.setVisibility(View.VISIBLE);
+                            status="check_out";
+
+                        }
+                    }
+                });
                 ArrayAdapter<String> a = new ArrayAdapter<String>(this, R.layout.item_spinner, groups);
                 deal_group_spinner.setPrompt("Select");
                 deal_group_spinner.setAdapter(a);
-
-
                 final AlertDialog finalDialog = dialog2;
                 iv_cancel_filter.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -324,7 +404,6 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements OnMa
                         Button bt_full_payment = view2.findViewById(R.id.bt_full_payment);
                         builder2.setView(view2);
 
-
                         bt_full_payment.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -333,20 +412,32 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements OnMa
                         });
                         dialog1 = builder2.create();
                         dialog1.setCancelable(true);
-                        dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
                         dialog1.show();
                     }
                 });
 
                 dialog2 = builder2.create();
+
                 dialog2.setCancelable(false);
-                dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                dialog2.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                dialog2.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                // dialog2.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
                 dialog2.show();
                 break;
         }
     }
 
+    private void setMargins(View view, int left, int top, int right, int bottom) {
+        if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+            p.setMargins(left, top, right, bottom);
+            view.requestLayout();
+        }
+    }
+
     private void singledetailAPi() {
+        shimmer_single_place_detail.startShimmerAnimation();
         Call<SinglePlaceDetailModel> call = Rest.getRetrofit().singlePlaceDetail(ApiConstents.SECRET_KEY,
                 "levre-de-cuppi");
 
@@ -354,22 +445,23 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements OnMa
             @Override
             public void onResponse(Call<SinglePlaceDetailModel> call, Response<SinglePlaceDetailModel> response) {
                 if (response.isSuccessful()) {
+                    shimmer_single_place_detail.stopShimmerAnimation();
+                    shimmer_single_place_detail.setVisibility(View.GONE);
+                    ll_single_detail.setVisibility(View.VISIBLE);
                     if (response.body().getSuccess() == true) {
                         single_place_viewPager.setAdapter(new SinglePlaceImageViewPagerAdapter(context, response.body().getDetail().getGallery()));
                         tv_single_place_title.setText(response.body().getDetail().getTitle());
                         tv_description.setText(Html.fromHtml(response.body().getDetail().getDescription()));
                         tv_single_place_location.setText(response.body().getDetail().getPropertyLocation());
-                        tv_citra_code.setText("Citra Code:"+response.body().getDetail().getCitraCode());
-                        tv_bathroom.setText("Bathrooms("+response.body().getDetail().getIcons().getBathrooms()+")");
-                        tv_guest.setText("Guests("+response.body().getDetail().getIcons().getGuests()+")");
-                        tv_room.setText("Rooms("+response.body().getDetail().getIcons().getRooms()+")");
-                       // ratingBar.setRating(Float.parseFloat(intent.getStringExtra("rating")));
-
+                        tv_citra_code.setText("Citra Code:" + response.body().getDetail().getCitraCode());
+                        tv_bathroom.setText("Bathrooms(" + response.body().getDetail().getIcons().getBathrooms() + ")");
+                        tv_guest.setText("Guests(" + response.body().getDetail().getIcons().getGuests() + ")");
+                        tv_room.setText("Rooms(" + response.body().getDetail().getIcons().getRooms() + ")");
+                        // ratingBar.setRating(Float.parseFloat(intent.getStringExtra("rating")));
 
                         makeTextViewResizable(tv_description, 5, "Read More", true);
 
-                    }
-                    else {
+                    } else {
                         Toast.makeText(SinglePlaceDetailActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }

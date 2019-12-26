@@ -18,6 +18,8 @@ import com.cinqueterreriveria.apis.ApiConstents;
 import com.cinqueterreriveria.apis.Rest;
 import com.cinqueterreriveria.apis.TransparentDialog;
 import com.cinqueterreriveria.models.PlaceListModel;
+import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.gms.maps.GoogleMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +31,7 @@ public class PlaceListActivity extends AppCompatActivity implements View.OnClick
     LinearLayout ll_back;
     TextView tv_app_bar_title;
     Intent intent;
+    ShimmerFrameLayout shimmer_list_container;
     TransparentDialog dialog=new TransparentDialog();
 
     @Override
@@ -46,6 +49,7 @@ public class PlaceListActivity extends AppCompatActivity implements View.OnClick
         intent=getIntent();
         ll_back=findViewById(R.id.ll_back);
         rv_place = findViewById(R.id.rv_place);
+        shimmer_list_container = findViewById(R.id.shimmer_list_container);
         tv_app_bar_title = findViewById(R.id.tv_app_bar_title);
         tv_app_bar_title.setVisibility(View.VISIBLE);
         rv_place.setLayoutManager(new LinearLayoutManager(context));
@@ -68,13 +72,18 @@ public class PlaceListActivity extends AppCompatActivity implements View.OnClick
 
     private void placeListApi()
     {
-        dialog.progressDialog(context);
+        shimmer_list_container.startShimmerAnimation();
+
+       // dialog.progressDialog(context);
         Call<PlaceListModel> call= Rest.getRetrofit().placeList(ApiConstents.SECRET_KEY,
                 intent.getStringExtra("place_name") );
         call.enqueue(new Callback<PlaceListModel>() {
             @Override
             public void onResponse(Call<PlaceListModel> call, Response<PlaceListModel> response) {
-                dialog.stopProgressDialog();
+                shimmer_list_container.stopShimmerAnimation();
+                shimmer_list_container.setVisibility(View.GONE);
+                rv_place.setVisibility(View.VISIBLE);
+                // dialog.stopProgressDialog();
                 if (response.isSuccessful())
                 {
                     if (response.body().getSuccess() == true)

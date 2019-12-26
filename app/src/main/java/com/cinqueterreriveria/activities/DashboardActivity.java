@@ -1,12 +1,13 @@
 package com.cinqueterreriveria.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,12 +16,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -38,7 +41,6 @@ import com.cinqueterreriveria.adapters.ExperienceAdapter;
 import com.cinqueterreriveria.adapters.NonSwipeableViewPager;
 import com.cinqueterreriveria.adapters.PlacesAdapter;
 import com.cinqueterreriveria.adapters.ServicesAdapter;
-import com.cinqueterreriveria.adapters.SpacesItemDecoration;
 import com.cinqueterreriveria.adapters.WhatToDoAdapter;
 import com.cinqueterreriveria.apis.ApiConstents;
 import com.cinqueterreriveria.apis.Rest;
@@ -60,15 +62,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Field;
 
 public class DashboardActivity extends AppCompatActivity
         implements View.OnClickListener, OnMapReadyCallback {
-
+    AlertDialog dialog1 = null;
     NavigationView navigation_view;
     ImageView iv_menu, iv_dashboard_back, iv_search, iv_dashboard_banner, profile_image;
     ShimmerFrameLayout shimmer_view_container;
@@ -76,7 +76,7 @@ public class DashboardActivity extends AppCompatActivity
     double lat, lng;
     DrawerLayout drawer_layout;
     TextView tv_accomodation, tv_experience, tv_services, tv_banner_title, tv_banner_description,
-            tv_blog, tv_contact_us, tv_faq, tv_logout, tv_MyAccount, tv_profile, tv_cinque;
+            tv_blog, tv_contact_us, tv_faq, tv_logout, tv_MyAccount, tv_profile, tv_cinque,tv_clock_in,tv_dashboard_check_out;
     RecyclerView rv_name_of_places, rv_book_uniques_experience, rv_services,
             rv_what_to_do, rv_accomodation, rv_experience;
     Context context = this;
@@ -88,11 +88,13 @@ public class DashboardActivity extends AppCompatActivity
     ExperienceAdapter experienceAdapter;
     ServicesAdapter servicesAdapter;
     PrefStore prefStore;
+String date;
     TransparentDialog dialog = new TransparentDialog();
     public static List<DashboardModel.Blog> blogsList;
     public static List<DashboardModel.Video> videosList;
     public static List<DashboardModel.HowReach> howReachList;
-    String[] places = {"MONTEROSSO", "MANAROLA", "PORTOVENERE", "VERNAZZA", "LA SPEZIA"};
+    //String[] places = {"MONTEROSSO", "MANAROLA", "PORTOVENERE", "VERNAZZA", "LA SPEZIA"};
+    List<String> places = new ArrayList<>();
     Spinner search_place_spinner;
     LinearLayout ll_search_box, rl_dashboard_appbar, ll_lay;
     ArrayList<Integer> personImages = new ArrayList<>(Arrays.asList(R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy));
@@ -147,6 +149,8 @@ public class DashboardActivity extends AppCompatActivity
         shimmer_view_container = findViewById(R.id.shimmer_view_container);
         tv_cinque = findViewById(R.id.tv_cinque);
         ll_lay = findViewById(R.id.ll_lay);
+        tv_clock_in = findViewById(R.id.tv_clock_in);
+        tv_dashboard_check_out = findViewById(R.id.tv_dashboard_check_out);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -159,13 +163,10 @@ public class DashboardActivity extends AppCompatActivity
         rv_services.setLayoutManager(new LinearLayoutManager(context));
         rv_what_to_do.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 
-
         //This will for default android divider
         rv_book_uniques_experience.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)); // set LayoutManager to RecyclerView
 
-
         //rv_book_uniques_experience.addItemDecoration(decoration);
-
 
         servicesAdapter = new ServicesAdapter(context);
 
@@ -184,6 +185,8 @@ public class DashboardActivity extends AppCompatActivity
         profile_image.setOnClickListener(this);
         tv_MyAccount.setOnClickListener(this);
         tv_profile.setOnClickListener(this);
+        tv_clock_in.setOnClickListener(this);
+        tv_dashboard_check_out.setOnClickListener(this);
 
         //rv_name_of_places.setAdapter(new PlacesAdapter(context));
 
@@ -201,10 +204,6 @@ public class DashboardActivity extends AppCompatActivity
         //viewpager.setOffscreenPageLimit(0);
         tab_layout.setupWithViewPager(viewpager);
 
-        ArrayAdapter<String> a = new ArrayAdapter<String>(this, R.layout.item_search_spinner, places);
-        search_place_spinner.setPrompt("Select");
-        search_place_spinner.setPopupBackgroundDrawable(getResources().getDrawable(R.drawable.solid_orange_rectangle));
-        search_place_spinner.setAdapter(a);
 
         dashboardApi();
     }
@@ -231,7 +230,14 @@ public class DashboardActivity extends AppCompatActivity
                 rl_dashboard_appbar.setBackgroundColor(getResources().getColor(R.color.orange));
                 iv_menu.setColorFilter(getResources().getColor(R.color.white));
                 break;
+            case R.id.tv_clock_in:
+                calenderdialog(tv_clock_in);
+                break;
 
+            case R.id.tv_dashboard_check_out:
+                calenderdialog(tv_dashboard_check_out);
+
+                break;
             case R.id.profile_image:
                 animSlideUp = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.slide_up);
@@ -438,6 +444,32 @@ public class DashboardActivity extends AppCompatActivity
         }
     }
 
+    private void calenderdialog(final TextView tv_clock_in)
+    {
+        final AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
+        View view2 = LayoutInflater.from(context).inflate(R.layout.popup_calender, null);
+        final CalendarView dashboard_calender = view2.findViewById(R.id.dashboard_calender);
+        final LinearLayout popup_cal = view2.findViewById(R.id.popup_cal);
+        builder2.setView(view2);
+        dashboard_calender.setMinDate(System. currentTimeMillis() - 1000);
+
+        dashboard_calender.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
+                date = day + "-" + month + "-" + year;
+
+                tv_clock_in.setText(date);
+                dialog1.dismiss();
+
+
+            }
+        });
+        dialog1 = builder2.create();
+        dialog1.setCancelable(true);
+
+        dialog1.show();
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -493,6 +525,14 @@ public class DashboardActivity extends AppCompatActivity
                 ll_lay.setVisibility(View.VISIBLE);
                 if (response.isSuccessful()) {
                     if (response.body().getSuccess() == true) {
+                        for (int i = 0; i < response.body().getLocation().size(); i++) {
+                            places.add(response.body().getLocation().get(i).getTitle());
+
+                        }
+                        ArrayAdapter<String> a = new ArrayAdapter<String>(context, R.layout.item_search_spinner, places);
+                        search_place_spinner.setPrompt("Select");
+                        search_place_spinner.setPopupBackgroundDrawable(getResources().getDrawable(R.drawable.solid_orange_rectangle));
+                        search_place_spinner.setAdapter(a);
 
                         lat = Double.parseDouble(response.body().getLat());
                         lng = Double.parseDouble(response.body().getLong());
