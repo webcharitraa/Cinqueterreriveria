@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:ellipsize="marquee"
-    android:layout_margin="@dimen/_10ssp"
+    android:padding="@dimen/_7sdp"
     android:textSize="@dimen/_10ssp"
     android:textColor="@color/grey_opcy"
     android:textAlignment="inherit"/>

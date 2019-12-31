@@ -11,9 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -68,15 +70,37 @@ public class SinglePlaceImageViewPagerAdapter extends PagerAdapter {
                 final AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
                 View view2 = LayoutInflater.from(context).inflate(R.layout.popup_image, null);
                 ImageView iv_cancel_image = view2.findViewById(R.id.iv_cancel_image);
-                ImageView iv_single_place_image = view2.findViewById(R.id.iv_single_place_image);
+                final ViewPager iv_single_place_image = view2.findViewById(R.id.iv_single_place_image);
+                RelativeLayout rl_left_nav = view2.findViewById(R.id.rl_left_nav);
+                RelativeLayout rl_right_nav = view2.findViewById(R.id.rl_right_nav);
                 builder2.setView(view2);
 
-                RequestOptions simpleOptions = new RequestOptions()
-                        .centerCrop()
 
-                        .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-                Glide.with(context).load(images.get(position)).apply(simpleOptions).into(iv_single_place_image);
+                // Images left navigation
+                rl_left_nav.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int tab = iv_single_place_image.getCurrentItem();
+                        if (tab > 0) {
+                            tab--;
+                            iv_single_place_image.setCurrentItem(tab);
+                        } else if (tab == 0) {
+                            iv_single_place_image.setCurrentItem(tab);
+                        }
+                    }
+                });
 
+                // Images right navigatin
+                rl_right_nav.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int tab = iv_single_place_image.getCurrentItem();
+                        tab++;
+                        iv_single_place_image.setCurrentItem(tab);
+                    }
+                });
+
+                iv_single_place_image.setAdapter(new SingleImageSliderAdapter(context, images));
 
                 iv_cancel_image.setOnClickListener(new View.OnClickListener() {
                     @Override

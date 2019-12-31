@@ -22,7 +22,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ContactUsActivity extends AppCompatActivity implements View.OnClickListener {
-
     Context context = this;
     LinearLayout ll_back;
     TextView tv_app_bar_title, tv_contact_us_title;
@@ -72,7 +71,8 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
                         Glide.with(context).load(response.body().getDetail().getBannerImage()).into(iv_contact_us);
                         webview.getSettings().setJavaScriptEnabled(true);
                         tv_contact_us_title.setText(response.body().getDetail().getBannerTitle());
-                        webview.loadDataWithBaseURL(null, response.body().getDetail().getContent(), "text/html", "utf-8", null);
+
+                        webview.loadDataWithBaseURL("https://www.cinqueterreriviera.com", response.body().getDetail().getContent(), "text/html", "utf-8", null);
 
                     } else {
 

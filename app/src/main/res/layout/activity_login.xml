@@ -62,9 +62,12 @@
                 android:fontFamily="@fonts/roboto_lightitalic.ttf"
                 android:gravity="start"
                 android:hint="@string/email"
-                android:textCursorDrawable="@color/dark_grey"
+                android:cursorVisible="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textCursorDrawable="@drawable/color_cursor"
                 android:inputType="textEmailAddress"
-android:textSize="@dimen/_12ssp"
+                android:textSize="@dimen/_12ssp"
                 android:singleLine="true"
                 android:textColor="@color/dark_grey" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -85,6 +88,7 @@ android:textSize="@dimen/_12ssp"
                 android:fontFamily="@fonts/roboto_lightitalic.ttf"
                 android:gravity="start"
                 android:hint="@string/password"
+                android:cursorVisible="true"
                 android:textSize="@dimen/_12ssp"
 
 

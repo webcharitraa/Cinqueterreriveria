@@ -9,11 +9,35 @@
 
     <include layout="@layout/app_bar"/>
 
+    <View
+        android:id="@+id/v"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/light_grey"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:contentDescription="@null"
+            android:src="@drawable/logo" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="Cinqueterreriveria"
+            android:visibility="gone"
+            android:textColor="@color/dark_grey"
+            android:textSize="@dimen/_20ssp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -21,6 +45,8 @@
             android:text="@string/select_payment_method"
             android:textColor="@color/grey_opcy"
             android:textStyle="bold"
+            android:layout_marginTop="@dimen/_70sdp"
+            android:layout_marginStart="@dimen/_40sdp"
             android:textSize="@dimen/_18ssp"/>
 
         <RadioGroup
@@ -39,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="Debit/Credit card payment"/>
+                android:text="Debit/Credit Card Payment"/>
         </RadioGroup>
 
 

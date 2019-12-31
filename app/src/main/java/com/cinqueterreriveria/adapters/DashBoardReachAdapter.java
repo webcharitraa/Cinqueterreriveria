@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,9 +48,9 @@ public class DashBoardReachAdapter extends RecyclerView.Adapter<DashBoardReachAd
 
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
         Glide.with(context).load(howReachList.get(position).getImage()).apply(simpleOptions).into(holder.iv_how_to_reach);
-        holder.tv_how_to_reach.setText(howReachList.get(position).getTitle());
+        holder.tv_dashboard_reach_us_title.setText(howReachList.get(position).getTitle());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.bt_reach_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 context.startActivity(new Intent(context, HowToReachDetailActivity.class).
@@ -66,11 +67,13 @@ public class DashBoardReachAdapter extends RecyclerView.Adapter<DashBoardReachAd
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView iv_how_to_reach;
-        TextView tv_how_to_reach;
+        Button bt_reach_detail;
+        TextView tv_how_to_reach,tv_dashboard_reach_us_title;
         public MyViewHolder(View view) {
             super(view);
             iv_how_to_reach=view.findViewById(R.id.iv_how_to_reach);
-            tv_how_to_reach=view.findViewById(R.id.tv_how_to_reach);
+            tv_dashboard_reach_us_title=view.findViewById(R.id.tv_dashboard_reach_us_title);
+            bt_reach_detail=view.findViewById(R.id.bt_reach_detail);
         }
     }
 }

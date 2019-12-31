@@ -43,7 +43,7 @@ public class LuxuryCollectionsActivity extends AppCompatActivity implements View
         tv_app_bar_title = findViewById(R.id.tv_app_bar_title);
 
         tv_app_bar_title.setVisibility(View.VISIBLE);
-        tv_app_bar_title.setText("Luxury Collections");
+        tv_app_bar_title.setText("Luxury Properties");
         rv_luxury_collection.setLayoutManager(new LinearLayoutManager(this));
 
         ll_back.setOnClickListener(this);

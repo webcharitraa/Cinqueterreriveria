@@ -53,8 +53,6 @@ public class ServiceDetailActivity extends AppCompatActivity implements View.OnC
         tv_app_bar_title=findViewById(R.id.tv_app_bar_title);
         ll_back=findViewById(R.id.ll_back);
 
-
-
          if (intent.getStringExtra("flag").equals("rental-agreement"))
         {
             pdfAPi();
@@ -62,6 +60,9 @@ public class ServiceDetailActivity extends AppCompatActivity implements View.OnC
         {
             servicesDetailApi();
         }if (intent.getStringExtra("flag").equals("wedding-proposal-in-the-cinque-terre"))
+        {
+            servicesDetailApi();
+        }if (intent.getStringExtra("flag").equals("wedding/vows-renewal-in-the-cinque-terre"))
         {
             servicesDetailApi();
         }

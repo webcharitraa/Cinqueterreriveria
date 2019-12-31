@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.FAQActivity">
+
+    <include layout="@layout/app_bar" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_faqs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_200sdp"
+                    android:contentDescription="@null"
+                    android:scaleType="fitXY"
+                    android:background="@color/low_light_grey" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Title"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_16ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="sub Title"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_16ssp"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/solid_light_grey">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payments"
+                    android:padding="@dimen/_3sdp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:tint="@color/grey"
+
+                    android:src="@drawable/ic_chevron_upwards_arrow"
+                    android:padding="@dimen/_10sdp"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/solid_light_grey">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The Cinque Terre Open Air Museum"
+                    android:padding="@dimen/_3sdp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:tint="@color/grey"
+                    android:src="@drawable/ic_chevron_upwards_arrow"
+                    android:padding="@dimen/_10sdp"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/solid_light_grey">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The Cinque Terre National Park"
+                    android:padding="@dimen/_3sdp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:tint="@color/grey"
+                    android:src="@drawable/ic_chevron_upwards_arrow"
+                    android:padding="@dimen/_10sdp"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/solid_light_grey">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vernazza Destination Weddings"
+                    android:padding="@dimen/_3sdp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:tint="@color/grey"
+                    android:src="@drawable/ic_chevron_upwards_arrow"
+                    android:padding="@dimen/_10sdp"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/solid_light_grey">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Destination Weddings in the Cinque"
+                    android:padding="@dimen/_3sdp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:tint="@color/grey"
+                    android:src="@drawable/ic_chevron_upwards_arrow"
+                    android:padding="@dimen/_10sdp"/>
+
+            </RelativeLayout><RelativeLayout
+            android:id="@+id/rl_bottom_rect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/solid_light_grey">
+
+            <TextView
+                android:layout_toLeftOf="@+id/iv_expand"
+                android:id="@+id/tv_faq_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pickpockets - be smarter than them!"
+                android:padding="@dimen/_3sdp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold"
+                android:textColor="@color/grey"/>
+
+            <ImageView
+                android:id="@+id/iv_expand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:tint="@color/grey"
+                android:src="@drawable/ic_chevron_upwards_arrow"
+                android:padding="@dimen/_10sdp"/>
+
+        </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll_faqs_data"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp">
+
+                <ImageView
+                    android:id="@+id/iv_faq_banner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_200sdp"
+                    android:contentDescription="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dummy" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_faq_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Title"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_faq_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="sub Title"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+
+                android:id="@+id/rv_faqs"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

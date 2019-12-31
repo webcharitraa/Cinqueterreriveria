@@ -2,6 +2,7 @@ package com.cinqueterreriveria.apis;
 
 import com.cinqueterreriveria.models.ContactUsModel;
 import com.cinqueterreriveria.models.DashboardModel;
+import com.cinqueterreriveria.models.FAQsModel;
 import com.cinqueterreriveria.models.HowToReachDetailModel;
 import com.cinqueterreriveria.models.LuxuryCollectionModel;
 import com.cinqueterreriveria.models.PDFModel;
@@ -70,5 +71,10 @@ public interface ApiInterface {
     @POST("propertyDetail/")
     Call<SinglePlaceDetailModel> singlePlaceDetail(@Query("secret_key") String secret_key,
                                                    @Field("name") String name);
+
+    // Faq api
+
+    @POST("faq/")
+    Call<FAQsModel> FAQs(@Query("secret_key") String secret_key);
 
 }

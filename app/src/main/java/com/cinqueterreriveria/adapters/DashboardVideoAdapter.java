@@ -11,8 +11,10 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.MediaController;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,8 +55,9 @@ public class DashboardVideoAdapter extends RecyclerView.Adapter<DashboardVideoAd
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
         Glide.with(context).load(videosList.get(position).getImage()).apply(simpleOptions).placeholder(R.drawable.logo).into(holder.iv_dashboard_video);
+        holder.tv_dashboard_video_title.setText(videosList.get(position).getTitle());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.bt_video_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -64,10 +67,7 @@ public class DashboardVideoAdapter extends RecyclerView.Adapter<DashboardVideoAd
                 WebView videoview=view2.findViewById(R.id.videoview);
                 builder2.setView(view2);
 
-
                 String vimeoVideo = "<html><body><iframe width=\"420\" height=\"550\" src="+videosList.get(position).getVideo()+ "frameborder=\"0\" allowfullscreen></iframe></body></html>";
-
-
                 videoview.setWebViewClient(new WebViewClient() {
                     @Override
                     public boolean shouldOverrideUrlLoading(WebView webView, WebResourceRequest request) {
@@ -119,9 +119,13 @@ public class DashboardVideoAdapter extends RecyclerView.Adapter<DashboardVideoAd
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView iv_dashboard_video;
+        Button bt_video_detail;
+        TextView tv_dashboard_video_title;
         public MyViewHolder(View view) {
             super(view);
             iv_dashboard_video=view.findViewById(R.id.iv_dashboard_video);
+            tv_dashboard_video_title=view.findViewById(R.id.tv_dashboard_video_title);
+            bt_video_detail=view.findViewById(R.id.bt_video_detail);
         }
     }
 }

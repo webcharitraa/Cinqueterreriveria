@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_faq"
+    android:layout_marginStart="@dimen/_10sdp"
+    android:layout_marginEnd="@dimen/_10sdp"
+    android:background="@drawable/strok_grey_light"
+    android:layout_marginBottom="@dimen/_10sdp">
+
+    <RelativeLayout
+       android:id="@+id/rl_bottom_rect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/strok_grey_light">
+
+        <TextView
+            android:layout_toLeftOf="@+id/iv_expand"
+            android:id="@+id/tv_faq_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payments"
+            android:padding="@dimen/_3sdp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_grey"/>
+
+        <ImageView
+            android:id="@+id/iv_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_chevron_upwards_arrow"
+            android:padding="@dimen/_10sdp"/>
+
+    </RelativeLayout>
+
+    <WebView
+        android:id="@+id/tv_expand_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:padding="@dimen/_5sdp"
+
+        />
+
+
+
+
+
+</LinearLayout>

@@ -175,7 +175,7 @@
                             android:layout_centerVertical="true"
 
                             android:layout_marginTop="@dimen/_3sdp"
-                            android:src="@drawable/ic_bathtub_with_opened_shower" />
+                            android:src="@drawable/ic_shower" />
 
                         <TextView
                             android:id="@+id/tv_bathrooms"

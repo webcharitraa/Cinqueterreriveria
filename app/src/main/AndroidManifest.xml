@@ -2,45 +2,86 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cinqueterreriveria">
 
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activities.ServiceDetailActivity"></activity>
-        <activity android:name=".activities.LuxuryCollectionsActivity" />
-        <activity android:name=".activities.HowToReachDetailActivity" />
-        <activity android:name=".activities.WhatToDoDetailActivity" />
-        <activity android:name=".activities.MyAccountActivity" />
-        <activity android:name=".activities.ContactUsActivity" />
-        <activity android:name=".activities.ForgetPasswordActivity" />
-        <activity android:name=".activities.BookingSuccessfulActivity" />
-        <activity android:name=".activities.PaymentMethodActivity" />
-        <activity android:name=".activities.PaymentTypeActivity" />
-        <activity android:name=".activities.SingleBoatTourActivity" />
-        <activity android:name=".activities.SingleBlogDetailActivity" />
-        <activity android:name=".activities.BlogsActivity" />
-        <activity android:name=".activities.SinglePlaceDetailActivity" />
-        <activity android:name=".activities.PlaceListActivity" />
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activities.FAQActivity"></activity>
+        <activity
+            android:name=".activities.ServiceDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.LuxuryCollectionsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.HowToReachDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.WhatToDoDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MyAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ContactUsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ForgetPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.BookingSuccessfulActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.PaymentMethodActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.PaymentTypeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.SingleBoatTourActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.SingleBlogDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.BlogsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.SinglePlaceDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.PlaceListActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAAYi6itRZ0rPgI76O3I83BhhzZHIgMwPg" />
 
-        <activity android:name=".activities.DashboardActivity" />
-        <activity android:name=".activities.RegisterActivity" />
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.WalkThroughActivity" />
-        <activity android:name=".Splash">
+        <activity
+            android:name=".activities.DashboardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.WalkThroughActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Splash"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

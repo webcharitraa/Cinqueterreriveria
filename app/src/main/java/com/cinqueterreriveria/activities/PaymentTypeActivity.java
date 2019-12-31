@@ -8,14 +8,17 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cinqueterreriveria.R;
 
 public class PaymentTypeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView tv_back;
+    TextView tv_back,tv_app_bar_title;
     Button bt_direct_book,bt_preBooking,bt_request_booking;
+    LinearLayout ll_back;
+    View v;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,11 +36,16 @@ public class PaymentTypeActivity extends AppCompatActivity implements View.OnCli
         bt_direct_book=findViewById(R.id.bt_direct_book);
         bt_preBooking=findViewById(R.id.bt_preBooking);
         bt_request_booking=findViewById(R.id.bt_request_booking);
-        tv_back.setText("Payment Types");
+        tv_app_bar_title=findViewById(R.id.tv_app_bar_title);
+        ll_back=findViewById(R.id.ll_back);
+        v=findViewById(R.id.v);
+        v.setVisibility(View.VISIBLE);
+        tv_app_bar_title.setText("Payment Types");
 
         bt_direct_book.setOnClickListener(this);
         bt_preBooking.setOnClickListener(this);
         bt_request_booking.setOnClickListener(this);
+        ll_back.setOnClickListener(this);
     }
 
     @Override
@@ -53,7 +61,9 @@ public class PaymentTypeActivity extends AppCompatActivity implements View.OnCli
                 case R.id.bt_request_booking:
                 startActivity(new Intent(PaymentTypeActivity.this,BookingSuccessfulActivity.class));
                 break;
-
+            case R.id.ll_back:
+                finish();
+                break;
         }
     }
 }

@@ -76,7 +76,7 @@ public class DashboardActivity extends AppCompatActivity
     double lat, lng;
     DrawerLayout drawer_layout;
     TextView tv_accomodation, tv_experience, tv_services, tv_banner_title, tv_banner_description,
-            tv_blog, tv_contact_us, tv_faq, tv_logout, tv_MyAccount, tv_profile, tv_cinque,tv_clock_in,tv_dashboard_check_out;
+            tv_blog, tv_contact_us, tv_faq, tv_logout, tv_MyAccount, tv_profile, tv_cinque, tv_clock_in, tv_dashboard_check_out;
     RecyclerView rv_name_of_places, rv_book_uniques_experience, rv_services,
             rv_what_to_do, rv_accomodation, rv_experience;
     Context context = this;
@@ -88,14 +88,15 @@ public class DashboardActivity extends AppCompatActivity
     ExperienceAdapter experienceAdapter;
     ServicesAdapter servicesAdapter;
     PrefStore prefStore;
-String date;
+    String date;
     TransparentDialog dialog = new TransparentDialog();
     public static List<DashboardModel.Blog> blogsList;
     public static List<DashboardModel.Video> videosList;
     public static List<DashboardModel.HowReach> howReachList;
-    //String[] places = {"MONTEROSSO", "MANAROLA", "PORTOVENERE", "VERNAZZA", "LA SPEZIA"};
+    String[] child = {"Child","1 ", "2 ", "3 ", "4 ", "5 "};
+    String[] adult= {"Adult","1 ", "2 ", "3 ", "4 ", "5 "};
     List<String> places = new ArrayList<>();
-    Spinner search_place_spinner;
+    Spinner search_place_spinner,adult_spinner,child_spinner;
     LinearLayout ll_search_box, rl_dashboard_appbar, ll_lay;
     ArrayList<Integer> personImages = new ArrayList<>(Arrays.asList(R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy));
 
@@ -151,6 +152,8 @@ String date;
         ll_lay = findViewById(R.id.ll_lay);
         tv_clock_in = findViewById(R.id.tv_clock_in);
         tv_dashboard_check_out = findViewById(R.id.tv_dashboard_check_out);
+        adult_spinner = findViewById(R.id.adult_spinner);
+        child_spinner = findViewById(R.id.child_spinner);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -286,7 +289,7 @@ String date;
                     rv_accomodation.setVisibility(View.GONE);
                     //slideUp(rv_accomodation);
                 } else {
-                    accomodationAdapter.notifyDataSetChanged();
+                   // accomodationAdapter.notifyDataSetChanged();
                     rv_accomodation.setVisibility(View.VISIBLE);
                     //slideUp(rv_accomodation);
                     rv_experience.setVisibility(View.GONE);
@@ -314,7 +317,7 @@ String date;
                     // rv_accomodation.setBackgroundColor(getResources().getColor(R.color.orange));
                     rv_experience.setVisibility(View.GONE);
                 } else {
-                    experienceAdapter.notifyDataSetChanged();
+                    //experienceAdapter.notifyDataSetChanged();
                     rv_experience.setVisibility(View.VISIBLE);
                     rv_accomodation.setVisibility(View.GONE);
                     rv_services.setVisibility(View.GONE);
@@ -341,7 +344,7 @@ String date;
                     // rv_accomodation.setBackgroundColor(getResources().getColor(R.color.orange));
                     rv_services.setVisibility(View.GONE);
                 } else {
-                    servicesAdapter.notifyDataSetChanged();
+                  //  servicesAdapter.notifyDataSetChanged();
                     rv_services.setVisibility(View.VISIBLE);
                     rv_accomodation.setVisibility(View.GONE);
                     rv_experience.setVisibility(View.GONE);
@@ -410,6 +413,8 @@ String date;
                 tv_faq.setBackgroundColor(getResources().getColor(R.color.orange_dark));
                 tv_experience.setTextColor(getResources().getColor(R.color.dark_grey));
                 tv_experience.setBackgroundColor(getResources().getColor(R.color.white));
+                startActivity(new Intent(context, FAQActivity.class));
+
                 break;
 
             case R.id.tv_MyAccount:
@@ -444,14 +449,13 @@ String date;
         }
     }
 
-    private void calenderdialog(final TextView tv_clock_in)
-    {
+    private void calenderdialog(final TextView tv_clock_in) {
         final AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
         View view2 = LayoutInflater.from(context).inflate(R.layout.popup_calender, null);
         final CalendarView dashboard_calender = view2.findViewById(R.id.dashboard_calender);
         final LinearLayout popup_cal = view2.findViewById(R.id.popup_cal);
         builder2.setView(view2);
-        dashboard_calender.setMinDate(System. currentTimeMillis() - 1000);
+        dashboard_calender.setMinDate(System.currentTimeMillis() - 1000);
 
         dashboard_calender.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -533,6 +537,14 @@ String date;
                         search_place_spinner.setPrompt("Select");
                         search_place_spinner.setPopupBackgroundDrawable(getResources().getDrawable(R.drawable.solid_orange_rectangle));
                         search_place_spinner.setAdapter(a);
+                        ArrayAdapter<String> a1 = new ArrayAdapter<String>(context, R.layout.item_search_spinner, adult);
+                        adult_spinner.setPrompt("Select");
+                        adult_spinner.setPopupBackgroundDrawable(getResources().getDrawable(R.drawable.solid_orange_rectangle));
+                        adult_spinner.setAdapter(a1);
+                        ArrayAdapter<String> a2 = new ArrayAdapter<String>(context, R.layout.item_search_spinner, child);
+                        child_spinner.setPrompt("Select");
+                        child_spinner.setPopupBackgroundDrawable(getResources().getDrawable(R.drawable.solid_orange_rectangle));
+                        child_spinner.setAdapter(a2);
 
                         lat = Double.parseDouble(response.body().getLat());
                         lng = Double.parseDouble(response.body().getLong());

@@ -25,8 +25,9 @@ public class YourInfoFragment extends Fragment implements View.OnClickListener {
 
     AlertDialog dialog1, dialog;
     Button bt_edit_card;
-    Spinner state_spinner;
+    Spinner state_spinner,country_spinner;
     String[] states = {"MONTEROSSO", "MANAROLA", "PORTOVENERE", "VERNAZZA", "LA SPEZIA"};
+    String[] country = {"India", "Canada"};
 
     public YourInfoFragment() {
         // Required empty public constructor
@@ -39,12 +40,14 @@ public class YourInfoFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_your_info, container, false);
         state_spinner = view.findViewById(R.id.state_spinner);
+        country_spinner = view.findViewById(R.id.country_spinner);
         bt_edit_card = view.findViewById(R.id.bt_edit_card);
         ArrayAdapter<String> a = new ArrayAdapter<String>(getActivity(), R.layout.item_spinner, states);
+        ArrayAdapter<String> a1 = new ArrayAdapter<String>(getActivity(), R.layout.item_spinner, country);
         state_spinner.setPrompt("Select");
         //search_place_spinner.setPopupBackgroundDrawable(getResources().getDrawable(R.drawable.solid_orange_rectangle));
         state_spinner.setAdapter(a);
-
+        country_spinner.setAdapter(a1);
 
         bt_edit_card.setOnClickListener(this);
         return view;

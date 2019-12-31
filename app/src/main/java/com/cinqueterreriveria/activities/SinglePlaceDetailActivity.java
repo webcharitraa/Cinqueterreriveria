@@ -83,6 +83,7 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements OnMa
     RecyclerView rv_collections, rv_details;
     GoogleMap mMap;
     String date;
+    double lat,lng;
     AlertDialog dialog2;
     RatingBar ratingBar;
     TextView tv_single_place_title, tv_amount, tv_citra_code, tv_bathroom, tv_guest, tv_room, tv_description, tv_single_place_location;
@@ -283,7 +284,7 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements OnMa
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng UCA = new LatLng(-34, 151);
+        LatLng UCA = new LatLng(lat, lng);
         BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.logo);
         Bitmap b = bitmapdraw.getBitmap();
         Bitmap smallMarker = Bitmap.createScaledBitmap(b, 100, 100, false);
@@ -445,6 +446,9 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements OnMa
             @Override
             public void onResponse(Call<SinglePlaceDetailModel> call, Response<SinglePlaceDetailModel> response) {
                 if (response.isSuccessful()) {
+
+                     lat= Double.parseDouble(response.body().getDetail().getLocation().getLat());
+                     lng= Double.parseDouble(response.body().getDetail().getLocation().getLong());
                     shimmer_single_place_detail.stopShimmerAnimation();
                     shimmer_single_place_detail.setVisibility(View.GONE);
                     ll_single_detail.setVisibility(View.VISIBLE);

@@ -18,8 +18,6 @@ import com.cinqueterreriveria.adapters.BlogAccommodationAdapter;
  * A simple {@link Fragment} subclass.
  */
 public class BlogDetailAccomodationFragment extends Fragment {
-
-
     RecyclerView rv_blogs_accommodation;
 
     public BlogDetailAccomodationFragment() {

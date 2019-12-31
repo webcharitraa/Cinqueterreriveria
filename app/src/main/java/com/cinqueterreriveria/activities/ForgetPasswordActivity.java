@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.cinqueterreriveria.R;
@@ -22,6 +23,7 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
     Context context = this;
     Button bt_forget_next;
     AlertDialog dialog1 = null;
+    LinearLayout ll_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,10 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
     private void initUis() {
 
         bt_forget_next = findViewById(R.id.bt_forget_next);
+        ll_back = findViewById(R.id.ll_back);
 
         bt_forget_next.setOnClickListener(this);
+        ll_back.setOnClickListener(this);
 
     }
 
@@ -65,6 +69,10 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
                 dialog1.setCancelable(true);
                 dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog1.show();
+                break;
+
+            case R.id.ll_back:
+                finish();
                 break;
         }
     }
