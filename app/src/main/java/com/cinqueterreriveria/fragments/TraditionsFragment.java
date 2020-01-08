@@ -3,18 +3,31 @@ package com.cinqueterreriveria.fragments;
 
 import android.os.Bundle;
 
-import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Html;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.cinqueterreriveria.R;
-import com.cinqueterreriveria.adapters.TraditionsAdapter;
+import com.cinqueterreriveria.adapters.BlogAccommodationAdapter;
+import com.cinqueterreriveria.apis.ApiConstents;
+import com.cinqueterreriveria.apis.Rest;
+import com.cinqueterreriveria.models.BlogCategoryModel;
+import com.facebook.shimmer.ShimmerFrameLayout;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,12 +35,14 @@ import com.cinqueterreriveria.adapters.TraditionsAdapter;
 public class TraditionsFragment extends Fragment {
 
     RecyclerView rv_blogs_traditions;
-
+    TextView tv_blog_title,tv_blog_des;
+    ImageView iv_blogcategory;
+    ShimmerFrameLayout shimmer_blog_traditions;
+    LinearLayout ll_blog_trandition;
 
     public TraditionsFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,12 +50,57 @@ public class TraditionsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_traditions, container, false);
         rv_blogs_traditions = view.findViewById(R.id.rv_blogs_traditions);
+        iv_blogcategory=view.findViewById(R.id.iv_blogcategory);
+        tv_blog_title=view.findViewById(R.id.tv_blog_title);
+        tv_blog_des=view.findViewById(R.id.tv_blog_des);
+        ll_blog_trandition=view.findViewById(R.id.ll_blog_trandition);
+        shimmer_blog_traditions=view.findViewById(R.id.shimmer_blog_traditions);
         rv_blogs_traditions.setNestedScrollingEnabled(false);
         rv_blogs_traditions.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rv_blogs_traditions.setAdapter(new TraditionsAdapter(getActivity()));
-
+      //rv_blogs_traditions.setAdapter(new TraditionsAdapter(getActivity()));
+        BlogCategoryAPI();
 
         return view;
     }
 
+    private void BlogCategoryAPI()
+    {
+        Call<BlogCategoryModel> call= Rest.getRetrofit().blogCategory(ApiConstents.SECRET_KEY,
+                "traditions");
+        shimmer_blog_traditions.startShimmerAnimation();
+        call.enqueue(new Callback<BlogCategoryModel>() {
+            @Override
+            public void onResponse(Call<BlogCategoryModel> call, Response<BlogCategoryModel> response) {
+                if (response.isSuccessful())
+                {
+                    if (response.body().getSuccess() == true)
+                    {
+                        shimmer_blog_traditions.stopShimmerAnimation();
+                        shimmer_blog_traditions.setVisibility(View.GONE);
+                        ll_blog_trandition.setVisibility(View.VISIBLE);
+                        tv_blog_title.setText(response.body().getDetail().getBannerTitle());
+                        tv_blog_des.setText(Html.fromHtml(response.body().getDetail().getContent()));
+                        RequestOptions simpleOptions = new RequestOptions()
+                                .centerCrop()
+
+                                .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+                        Glide.with(getActivity()).load(response.body().getDetail().getBannerImage()).placeholder(R.drawable.placeholder).apply(simpleOptions).into(iv_blogcategory);
+
+                        rv_blogs_traditions.setAdapter(new BlogAccommodationAdapter(getActivity(),response.body().getDetail().getBlogDescription()));
+
+                    }
+                    else {
+                        shimmer_blog_traditions.stopShimmerAnimation();
+                        shimmer_blog_traditions.setVisibility(View.GONE);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BlogCategoryModel> call, Throwable t) {
+                shimmer_blog_traditions.stopShimmerAnimation();
+                shimmer_blog_traditions.setVisibility(View.GONE);
+            }
+        });
+    }
 }

@@ -9,9 +9,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.cinqueterreriveria.fragments.AccountFAQFragment;
 import com.cinqueterreriveria.fragments.BookingFragment;
-import com.cinqueterreriveria.fragments.DashBoardReachUsFragment;
-import com.cinqueterreriveria.fragments.DashboardBlogFragment;
-import com.cinqueterreriveria.fragments.DashboardVideoFragment;
+
 import com.cinqueterreriveria.fragments.YourInfoFragment;
 
 public class AccountViewPagerAdapter extends FragmentPagerAdapter {

@@ -10,7 +10,7 @@
         android:id="@+id/iv_luxury_collection"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_120sdp"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:src="@drawable/dummy"
         app:riv_corner_radius="5dip"
         app:riv_mutate_background="true"
@@ -92,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_120sdp"
                 android:contentDescription="@null"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 android:src="@drawable/dummy" />
 
             <TextView

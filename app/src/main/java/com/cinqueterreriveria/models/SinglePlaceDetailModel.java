@@ -7,7 +7,6 @@ import java.util.List;
 
 public class SinglePlaceDetailModel {
 
-
     public class Comment {
 
         @SerializedName("name")
@@ -35,7 +34,6 @@ public class SinglePlaceDetailModel {
 
     }
 
-
     public class Detail {
 
         @SerializedName("amenties")
@@ -53,12 +51,36 @@ public class SinglePlaceDetailModel {
         @SerializedName("Description")
         @Expose
         private String description;
+
+        public String getRating() {
+            return rating;
+        }
+
+        public void setRating(String rating) {
+            this.rating = rating;
+        }
+
+        @SerializedName("rating")
+        @Expose
+        private String rating;
         @SerializedName("Product Tags")
         @Expose
         private List<String> productTags = null;
+        @SerializedName("product_id")
+        @Expose
+        private String productId;
+        @SerializedName("property_id")
+        @Expose
+        private String propertyId;
         @SerializedName("details")
         @Expose
-        private Details details;
+        private List<Detail_> details = null;
+        @SerializedName("nearby")
+        @Expose
+        private List<Nearby> nearby = null;
+        @SerializedName("floorPlanImage")
+        @Expose
+        private String floorPlanImage;
         @SerializedName("icons")
         @Expose
         private Icons icons;
@@ -70,7 +92,7 @@ public class SinglePlaceDetailModel {
         private String citraCode;
         @SerializedName("extras")
         @Expose
-        private Extras extras;
+        private List<Extra> extras = null;
         @SerializedName("Property Rates")
         @Expose
         private List<PropertyRate> propertyRates = null;
@@ -132,12 +154,44 @@ public class SinglePlaceDetailModel {
             this.productTags = productTags;
         }
 
-        public Details getDetails() {
+        public String getProductId() {
+            return productId;
+        }
+
+        public void setProductId(String productId) {
+            this.productId = productId;
+        }
+
+        public String getPropertyId() {
+            return propertyId;
+        }
+
+        public void setPropertyId(String propertyId) {
+            this.propertyId = propertyId;
+        }
+
+        public List<Detail_> getDetails() {
             return details;
         }
 
-        public void setDetails(Details details) {
+        public void setDetails(List<Detail_> details) {
             this.details = details;
+        }
+
+        public List<Nearby> getNearby() {
+            return nearby;
+        }
+
+        public void setNearby(List<Nearby> nearby) {
+            this.nearby = nearby;
+        }
+
+        public String getFloorPlanImage() {
+            return floorPlanImage;
+        }
+
+        public void setFloorPlanImage(String floorPlanImage) {
+            this.floorPlanImage = floorPlanImage;
         }
 
         public Icons getIcons() {
@@ -164,11 +218,11 @@ public class SinglePlaceDetailModel {
             this.citraCode = citraCode;
         }
 
-        public Extras getExtras() {
+        public List<Extra> getExtras() {
             return extras;
         }
 
-        public void setExtras(Extras extras) {
+        public void setExtras(List<Extra> extras) {
             this.extras = extras;
         }
 
@@ -207,18 +261,29 @@ public class SinglePlaceDetailModel {
     }
 
 
-    public class Details {
+    public class Detail_ {
 
-        @SerializedName("Property Type")
+        @SerializedName("name")
         @Expose
-        private String propertyType;
+        private String name;
+        @SerializedName("value")
+        @Expose
+        private String value;
 
-        public String getPropertyType() {
-            return propertyType;
+        public String getName() {
+            return name;
         }
 
-        public void setPropertyType(String propertyType) {
-            this.propertyType = propertyType;
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
         }
 
     }
@@ -260,128 +325,29 @@ public class SinglePlaceDetailModel {
 
 
 
-    public class Extras {
+    public class Extra {
 
-        @SerializedName("Cleaning Fees")
+        @SerializedName("name")
         @Expose
-        private String cleaningFees;
-        @SerializedName("Security Deposit")
+        private String name;
+        @SerializedName("value")
         @Expose
-        private String securityDeposit;
-        @SerializedName("City Tax")
-        @Expose
-        private String cityTax;
-        @SerializedName("Deposit")
-        @Expose
-        private String deposit;
-        @SerializedName("Extra Guest (over 2)")
-        @Expose
-        private String extraGuestOver2;
-        @SerializedName("Pet (max.1)")
-        @Expose
-        private String petMax1;
-        @SerializedName("Beach Towels (each)")
-        @Expose
-        private String beachTowelsEach;
-        @SerializedName("Baby Cot")
-        @Expose
-        private String babyCot;
-        @SerializedName("Extra Towels (each)")
-        @Expose
-        private String extraTowelsEach;
-        @SerializedName("Change Linen (per bed)")
-        @Expose
-        private String changeLinenPerBed;
-        @SerializedName("Daily Cleaning (1hour)")
-        @Expose
-        private String dailyCleaning1hour;
+        private String value;
 
-        public String getCleaningFees() {
-            return cleaningFees;
+        public String getName() {
+            return name;
         }
 
-        public void setCleaningFees(String cleaningFees) {
-            this.cleaningFees = cleaningFees;
+        public void setName(String name) {
+            this.name = name;
         }
 
-        public String getSecurityDeposit() {
-            return securityDeposit;
+        public String getValue() {
+            return value;
         }
 
-        public void setSecurityDeposit(String securityDeposit) {
-            this.securityDeposit = securityDeposit;
-        }
-
-        public String getCityTax() {
-            return cityTax;
-        }
-
-        public void setCityTax(String cityTax) {
-            this.cityTax = cityTax;
-        }
-
-        public String getDeposit() {
-            return deposit;
-        }
-
-        public void setDeposit(String deposit) {
-            this.deposit = deposit;
-        }
-
-        public String getExtraGuestOver2() {
-            return extraGuestOver2;
-        }
-
-        public void setExtraGuestOver2(String extraGuestOver2) {
-            this.extraGuestOver2 = extraGuestOver2;
-        }
-
-        public String getPetMax1() {
-            return petMax1;
-        }
-
-        public void setPetMax1(String petMax1) {
-            this.petMax1 = petMax1;
-        }
-
-        public String getBeachTowelsEach() {
-            return beachTowelsEach;
-        }
-
-        public void setBeachTowelsEach(String beachTowelsEach) {
-            this.beachTowelsEach = beachTowelsEach;
-        }
-
-        public String getBabyCot() {
-            return babyCot;
-        }
-
-        public void setBabyCot(String babyCot) {
-            this.babyCot = babyCot;
-        }
-
-        public String getExtraTowelsEach() {
-            return extraTowelsEach;
-        }
-
-        public void setExtraTowelsEach(String extraTowelsEach) {
-            this.extraTowelsEach = extraTowelsEach;
-        }
-
-        public String getChangeLinenPerBed() {
-            return changeLinenPerBed;
-        }
-
-        public void setChangeLinenPerBed(String changeLinenPerBed) {
-            this.changeLinenPerBed = changeLinenPerBed;
-        }
-
-        public String getDailyCleaning1hour() {
-            return dailyCleaning1hour;
-        }
-
-        public void setDailyCleaning1hour(String dailyCleaning1hour) {
-            this.dailyCleaning1hour = dailyCleaning1hour;
+        public void setValue(String value) {
+            this.value = value;
         }
 
     }
@@ -425,7 +391,6 @@ public class SinglePlaceDetailModel {
 
     }
 
-
     public class Location {
 
         @SerializedName("Lat")
@@ -454,7 +419,43 @@ public class SinglePlaceDetailModel {
     }
 
 
+    public class Nearby {
 
+        @SerializedName("name")
+        @Expose
+        private String name;
+        @SerializedName("image")
+        @Expose
+        private String image;
+        @SerializedName("slug")
+        @Expose
+        private String slug;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
+        }
+
+        public String getSlug() {
+            return slug;
+        }
+
+        public void setSlug(String slug) {
+            this.slug = slug;
+        }
+
+    }
 
     public class OurRules {
 
@@ -526,7 +527,6 @@ public class SinglePlaceDetailModel {
         }
 
     }
-
 
     public class PropertyRate {
 

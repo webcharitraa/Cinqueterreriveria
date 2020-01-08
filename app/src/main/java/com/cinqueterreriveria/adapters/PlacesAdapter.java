@@ -62,7 +62,8 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.MyViewHold
             @Override
             public void onClick(View view) {
                 context.startActivity(new Intent(context, PlaceListActivity.class).
-                        putExtra("place_name",location.get(position).getSlug()));
+                        putExtra("place_name",location.get(position).getSlug()).
+                        putExtra("flag","place"));
             }
         });
     }

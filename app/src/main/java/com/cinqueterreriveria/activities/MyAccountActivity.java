@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.cinqueterreriveria.R;
 import com.cinqueterreriveria.adapters.AccountViewPagerAdapter;
-import com.cinqueterreriveria.adapters.DashboardViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class MyAccountActivity extends AppCompatActivity {

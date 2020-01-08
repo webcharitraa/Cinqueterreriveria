@@ -4,12 +4,11 @@
     android:layout_height="wrap_content">
 
 
-
     <ImageView
         android:id="@+id/iv_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_settings"
         />
     <TextView

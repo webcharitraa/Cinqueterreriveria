@@ -1,30 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fillViewport="true"
+    android:focusableInTouchMode="true"
     tools:context=".fragments.AccountFAQFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/_18ssp"
-        android:textStyle="bold"
-        android:textColor="@color/dark_grey"
-        android:layout_marginTop="@dimen/_30sdp"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:text="@string/all_you_need_to_know_to_survive_the_cinque_terre" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/grey_opcy"
-        android:text="It will be so easy to spend a holiday in the Riveria with us.Do You have Questions? Find Our Answers  visiting the Cinque Terre will be so fun and stress free!"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:textSize="@dimen/_12ssp"
-        android:layout_marginTop="@dimen/_20sdp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</LinearLayout>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/account_shimmer_faqs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold"
+                    android:textColor="@color/light_grey"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="@string/all_you_need_to_know_to_survive_the_cinque_terre" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_grey"
+                    android:text="It will be so easy to spend a holiday in the Riveria with us.Do You have Questions? Find Our Answers  visiting the Cinque Terre will be so fun and stress free!"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_marginTop="@dimen/_20sdp"/>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/solid_light_grey">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Payments"
+                        android:padding="@dimen/_3sdp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold"
+                        android:textColor="@color/grey"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:tint="@color/grey"
+
+                        android:src="@drawable/ic_chevron_upwards_arrow"
+                        android:padding="@dimen/_10sdp"/>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/solid_light_grey">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="The Cinque Terre Open Air Museum"
+                        android:padding="@dimen/_3sdp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold"
+                        android:textColor="@color/grey"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:tint="@color/grey"
+                        android:src="@drawable/ic_chevron_upwards_arrow"
+                        android:padding="@dimen/_10sdp"/>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/solid_light_grey">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="The Cinque Terre National Park"
+                        android:padding="@dimen/_3sdp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold"
+                        android:textColor="@color/grey"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:tint="@color/grey"
+                        android:src="@drawable/ic_chevron_upwards_arrow"
+                        android:padding="@dimen/_10sdp"/>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/solid_light_grey">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vernazza Destination Weddings"
+                        android:padding="@dimen/_3sdp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold"
+                        android:textColor="@color/grey"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:tint="@color/grey"
+                        android:src="@drawable/ic_chevron_upwards_arrow"
+                        android:padding="@dimen/_10sdp"/>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/solid_light_grey">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Destination Weddings in the Cinque"
+                        android:padding="@dimen/_3sdp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold"
+                        android:textColor="@color/grey"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:tint="@color/grey"
+                        android:src="@drawable/ic_chevron_upwards_arrow"
+                        android:padding="@dimen/_10sdp"/>
+
+                </RelativeLayout><RelativeLayout
+                android:id="@+id/rl_bottom_rect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/solid_light_grey">
+
+                <TextView
+                    android:layout_toLeftOf="@+id/iv_expand"
+                    android:id="@+id/tv_faq_item_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pickpockets - be smarter than them!"
+                    android:padding="@dimen/_3sdp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey"/>
+
+                <ImageView
+                    android:id="@+id/iv_expand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:tint="@color/grey"
+                    android:src="@drawable/ic_chevron_upwards_arrow"
+                    android:padding="@dimen/_10sdp"/>
+
+            </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_account_faq_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+        <TextView
+            android:id="@+id/tv_account_faq_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_grey"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:text="@string/all_you_need_to_know_to_survive_the_cinque_terre" />
+
+        <TextView
+            android:id="@+id/tv_account_faq_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey_opcy"
+            android:text="It will be so easy to spend a holiday in the Riveria with us.Do You have Questions? Find Our Answers  visiting the Cinque Terre will be so fun and stress free!"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:textSize="@dimen/_12ssp"
+            android:layout_marginTop="@dimen/_20sdp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_account_faq"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

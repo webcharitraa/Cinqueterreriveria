@@ -31,7 +31,6 @@
             android:layout_height="match_parent"
             tools:context=".activities.SinglePlaceDetailActivity">
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,7 +39,8 @@
                 <com.facebook.shimmer.ShimmerFrameLayout
                     android:id="@+id/shimmer_single_place_detail"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -221,7 +221,6 @@
                                         </RelativeLayout>
 
                                         <RelativeLayout
-
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -242,17 +241,14 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_centerVertical="true"
                                                 android:layout_marginStart="@dimen/_5sdp"
-
                                                 android:layout_toEndOf="@+id/iv_group1"
                                                 android:text="Guests(5)"
                                                 android:textColor="@color/light_grey"
                                                 android:textSize="@dimen/_10ssp" />
 
-
                                         </RelativeLayout>
 
                                         <RelativeLayout
-
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_marginEnd="@dimen/_10sdp"
@@ -264,7 +260,6 @@
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:layout_centerVertical="true"
-
                                                 android:layout_marginTop="@dimen/_3sdp"
                                                 android:src="@drawable/ic_double_king_size_bed" />
 
@@ -273,7 +268,6 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_centerVertical="true"
                                                 android:layout_marginStart="@dimen/_5sdp"
-
                                                 android:layout_toEndOf="@+id/iv_car1"
                                                 android:text="Rooms(2)"
                                                 android:textColor="@color/dark_grey"
@@ -391,6 +385,7 @@
                                             android:textStyle="bold" />
 
                                         <RatingBar
+                                            android:id="@+id/rb_place_detail"
                                             style="@style/CustomRatingBar"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -564,7 +559,6 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-
                                     android:background="@color/light_grey"
                                     android:orientation="vertical">
 
@@ -600,8 +594,6 @@
                                         android:textColor="@color/dark_grey"
                                         android:textSize="@dimen/_16ssp" />
                                 </LinearLayout>
-
-
                             </LinearLayout>
                         </RelativeLayout>
                     </LinearLayout>
@@ -664,20 +656,21 @@
                                     android:textStyle="bold" />
 
                                 <TextView
+                                    android:id="@+id/tv_property_type"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/_20sdp"
                                     android:layout_marginTop="@dimen/_5sdp"
                                     android:layout_marginEnd="@dimen/_20sdp"
-                                    android:text="Introducing this property tanca Villa is enhanting 4 villa bedroom with.."
+                                    android:text="Introducing "
+                                    android:layout_gravity="center"
                                     android:textColor="@color/grey_opcy"
-                                    android:textSize="@dimen/_10ssp" />
+                                    android:textSize="@dimen/_16ssp" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_10sdp"
-
                                     android:orientation="horizontal">
 
                                     <LinearLayout
@@ -686,7 +679,12 @@
                                         android:layout_marginStart="@dimen/_20sdp"
                                         android:layout_weight="0.7"
                                         android:orientation="vertical">
-
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/starting_from_price"
+                                            android:textColor="@color/grey_opcy"
+                                            android:textSize="@dimen/_10ssp" />
                                         <RelativeLayout
                                             android:layout_width="wrap_content"
                                             android:layout_height="@dimen/_21sdp">
@@ -707,13 +705,6 @@
                                                 android:layout_toEndOf="@+id/tv_amount"
                                                 android:text="/night" />
                                         </RelativeLayout>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/starting_from_price"
-                                            android:textColor="@color/grey_opcy"
-                                            android:textSize="@dimen/_10ssp" />
                                     </LinearLayout>
 
                                     <LinearLayout
@@ -754,7 +745,6 @@
                                     </LinearLayout>
                                 </LinearLayout>
 
-
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -773,7 +763,6 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_centerVertical="true"
-
                                             android:layout_marginTop="@dimen/_3sdp"
                                             android:src="@drawable/ic_shower" />
 
@@ -787,12 +776,9 @@
                                             android:text="Bathrooms(1)"
                                             android:textColor="@color/dark_grey"
                                             android:textSize="@dimen/_10ssp" />
-
-
                                     </RelativeLayout>
 
                                     <RelativeLayout
-
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center"
@@ -804,7 +790,6 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_centerVertical="true"
-
                                             android:layout_marginTop="@dimen/_3sdp"
                                             android:src="@drawable/ic_group" />
 
@@ -814,17 +799,13 @@
                                             android:layout_height="wrap_content"
                                             android:layout_centerVertical="true"
                                             android:layout_marginStart="@dimen/_5sdp"
-
                                             android:layout_toEndOf="@+id/iv_group"
                                             android:text="Guests(5)"
                                             android:textColor="@color/dark_grey"
                                             android:textSize="@dimen/_10ssp" />
-
-
                                     </RelativeLayout>
 
                                     <RelativeLayout
-
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginEnd="@dimen/_10sdp"
@@ -836,7 +817,6 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_centerVertical="true"
-
                                             android:layout_marginTop="@dimen/_3sdp"
                                             android:src="@drawable/ic_double_king_size_bed" />
 
@@ -846,13 +826,11 @@
                                             android:layout_height="wrap_content"
                                             android:layout_centerVertical="true"
                                             android:layout_marginStart="@dimen/_5sdp"
-
                                             android:layout_toEndOf="@+id/iv_car"
                                             android:text="Rooms(2)"
                                             android:textColor="@color/dark_grey"
                                             android:textSize="@dimen/_10ssp" />
                                     </RelativeLayout>
-
                                 </LinearLayout>
 
                                 <View
@@ -866,6 +844,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_10sdp"
+                                    android:visibility="gone"
                                     android:orientation="horizontal">
 
                                     <LinearLayout
@@ -880,7 +859,6 @@
                                             android:layout_height="wrap_content"
                                             android:contentDescription="@null"
                                             android:src="@drawable/ic_wiping_swipe_for_floors" />
-
 
                                         <LinearLayout
                                             android:layout_width="wrap_content"
@@ -971,7 +949,7 @@
                                         android:isIndicator="true"
                                         android:numStars="5"
                                         android:progressDrawable="@drawable/rating_layerlist"
-                                        android:rating="2"
+                                        android:rating="5"
                                         android:stepSize=".5" />
                                 </LinearLayout>
 
@@ -1071,38 +1049,45 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_50sdp"
                                 android:background="@color/light_grey"
+                                android:visibility="gone"
                                 android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_20sdp"
-                                    android:layout_marginTop="@dimen/_15sdp"
-                                    android:text="@string/details"
-                                    android:textColor="@color/dark_grey"
-                                    android:textSize="@dimen/_16ssp"
-                                    android:textStyle="bold" />
                             </LinearLayout>
 
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="0.5dp"
+                                android:visibility="gone"
                                 android:background="@color/grey_opcy" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_20sdp"
-                                android:layout_marginTop="@dimen/_15sdp"
-                                android:layout_marginEnd="@dimen/_20sdp"
-                                android:layout_marginBottom="@dimen/_15sdp"
-                                android:background="@color/white"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
                                 android:orientation="vertical">
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/_10sdp"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:text="@string/details"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="@dimen/_16ssp"
+                                    android:textStyle="bold" />
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:visibility="visible"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:background="@color/grey_opcy" />
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/rv_details"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/_10sdp"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:layout_marginTop="@dimen/_10sdp"/>
                             </LinearLayout>
 
                             <View
@@ -1113,7 +1098,7 @@
                             <com.google.android.material.tabs.TabLayout
                                 android:id="@+id/place_detail_tabs"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/_40sdp"
+                                android:layout_height="wrap_content"
                                 app:tabIndicatorColor="@color/orange"
                                 app:tabIndicatorHeight="@dimen/_2sdp"
                                 app:tabMode="scrollable"
@@ -1125,7 +1110,7 @@
                                 android:layout_height="0.5dp"
                                 android:background="@color/grey_opcy" />
 
-                            <com.cinqueterreriveria.adapters.NonSwipeableViewPager
+                            <com.cinqueterreriveria.adapters.CustomPagerFoeSinglePlace
                                 android:id="@+id/place_detail_viewpager"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,9 +15,11 @@ import java.util.ArrayList;
 public class AmenitiesAdapter extends RecyclerView.Adapter<AmenitiesAdapter.MyViewHolder> {
 
     Context context;
+    ArrayList<String> amentiesList;
 
-    public AmenitiesAdapter(Context context) {
+    public AmenitiesAdapter(Context context, ArrayList<String> amentiesList) {
         this.context = context;
+        this.amentiesList = amentiesList;
 
     }
 
@@ -31,20 +33,22 @@ public class AmenitiesAdapter extends RecyclerView.Adapter<AmenitiesAdapter.MyVi
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        //holder.imageView1.setImageResource(personImages.get(position));
+        holder.tv_amenties.setText(amentiesList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 8;
+        return amentiesList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imageView1;
+
+        TextView tv_amenties;
         public MyViewHolder(View view) {
             super(view);
-            imageView1=view.findViewById(R.id.imageView1);
+            tv_amenties=view.findViewById(R.id.tv_amenties);
+
         }
     }
 }

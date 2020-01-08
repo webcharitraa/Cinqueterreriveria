@@ -6,21 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.cinqueterreriveria.R;
-import com.cinqueterreriveria.activities.WhatToDoDetailActivity;
+import com.cinqueterreriveria.activities.BlogDetailsActivity;
 import com.cinqueterreriveria.models.DashboardModel;
 import com.makeramen.roundedimageview.RoundedImageView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.MyViewHolder> {
@@ -53,11 +50,10 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.MyViewHolder> 
         holder.tv_dashboard_blog_title.setText(blogsListl.get(position).getTitle());
         holder.tv_dashboard_blog_description.setText(blogsListl.get(position).getSlug());
 
-
         holder.bt_blog_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, WhatToDoDetailActivity.class).
+                context.startActivity(new Intent(context, BlogDetailsActivity.class).
                         putExtra("what_name",blogsListl.get(position).getSlug()));
             }
         });

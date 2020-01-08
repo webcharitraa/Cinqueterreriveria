@@ -16,7 +16,7 @@
             android:id="@+id/iv_how_to_reach_detail"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_200sdp"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             android:src="@drawable/dummy" />
 
         <TextView

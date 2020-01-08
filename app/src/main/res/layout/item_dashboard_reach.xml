@@ -19,7 +19,7 @@
             android:layout_height="@dimen/_150sdp"
             android:src="@drawable/dummy"
             android:padding="@dimen/_7sdp"
-            android:scaleType="fitXY"/>
+            android:scaleType="centerCrop"/>
 
         <TextView
             android:id="@+id/tv_dashboard_reach_us_title"

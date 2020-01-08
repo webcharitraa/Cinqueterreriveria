@@ -5,8 +5,14 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +22,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.FAQActivity"></activity>
+        <activity android:name=".activities.PlayVideoActivity"
+           android:screenOrientation="landscape"></activity>
+        <activity android:name=".activities.BankTransferActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.BlogDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.FAQActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.ServiceDetailActivity"
             android:screenOrientation="portrait" />

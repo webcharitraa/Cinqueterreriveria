@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,12 +23,12 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.MyVi
 
     Context context;
     List<PlaceListModel.LocationProperty> locationProperties;
-    String place_name;
 
-    public PlaceListAdapter(Context context, List<PlaceListModel.LocationProperty> locationProperties, String place_name) {
+
+    public PlaceListAdapter(Context context, List<PlaceListModel.LocationProperty> locationProperties) {
         this.context = context;
         this.locationProperties = locationProperties;
-        this.place_name = place_name;
+
     }
 
     @Override
@@ -51,13 +50,14 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.MyVi
         holder.tv_rooms.setText("Rooms("+locationProperties.get(position).getIcons().getRooms()+")");
         holder.tv_price.setText(locationProperties.get(position).getPrice());
         holder.viewpager.setAdapter(new ImageSlideAdapter(context, locationProperties.get(position).getGallery(),
-                locationProperties.get(position).getStatus()));
+                locationProperties.get(position).getStatus(),locationProperties.get(position).getSlug()));
         holder.ratingBar.setRating(Float.parseFloat(locationProperties.get(position).getRating()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 context.startActivity(new Intent(context, SinglePlaceDetailActivity.class)
-                        .putExtra("rating",locationProperties.get(position).getRating()));
+                        .putExtra("rating",locationProperties.get(position).getRating())
+                .putExtra("slug",locationProperties.get(position).getSlug()));
             }
         });
 

@@ -1,16 +1,17 @@
 package com.cinqueterreriveria.adapters;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
@@ -21,8 +22,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.cinqueterreriveria.R;
-import com.cinqueterreriveria.activities.PaymentTypeActivity;
-import com.cinqueterreriveria.activities.SinglePlaceDetailActivity;
 
 import java.util.List;
 
@@ -50,9 +49,10 @@ public class SinglePlaceImageViewPagerAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, final int position) {
-
         View view = LayoutInflater.from(context).inflate(R.layout.item_single_place_detail_slider_images, container, false);
         ImageView iv_single_page_images = view.findViewById(R.id.iv_single_page_images);
+        ImageView iv_single_back = view.findViewById(R.id.iv_single_back);
+        LinearLayout ll_slide_down = view.findViewById(R.id.ll_slide_down);
 
         RequestOptions simpleOptions = new RequestOptions()
                 .centerCrop()
@@ -63,6 +63,13 @@ public class SinglePlaceImageViewPagerAdapter extends PagerAdapter {
         Glide.with(context).load(images.get(position)).apply(simpleOptions).into(iv_single_page_images);
         //iv_single_page_images.setImageResource(images[position]);
 
+
+        iv_single_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((Activity) context).finish();
+            }
+        });
         iv_single_page_images.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +81,6 @@ public class SinglePlaceImageViewPagerAdapter extends PagerAdapter {
                 RelativeLayout rl_left_nav = view2.findViewById(R.id.rl_left_nav);
                 RelativeLayout rl_right_nav = view2.findViewById(R.id.rl_right_nav);
                 builder2.setView(view2);
-
 
                 // Images left navigation
                 rl_left_nav.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +122,15 @@ public class SinglePlaceImageViewPagerAdapter extends PagerAdapter {
             }
         });
         container.addView(view);
+
+
+
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(50); //You can manage the blinking time with this parameter
+        anim.setStartOffset(20);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(Animation.INFINITE);
+        ll_slide_down.startAnimation(anim);
         return view;
     }
 

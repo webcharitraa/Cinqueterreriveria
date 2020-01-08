@@ -18,7 +18,6 @@ import com.cinqueterreriveria.R;
 import com.cinqueterreriveria.activities.HowToReachDetailActivity;
 import com.cinqueterreriveria.models.DashboardModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DashBoardReachAdapter extends RecyclerView.Adapter<DashBoardReachAdapter.MyViewHolder> {

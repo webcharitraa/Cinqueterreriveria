@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cinqueterreriveria.R;
+import com.cinqueterreriveria.activities.SinglePlaceDetailActivity;
 import com.cinqueterreriveria.adapters.NearByAdapter;
 
 /**
@@ -33,7 +34,7 @@ public class NearByFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_near_by, container, false);
         rv_near_by = view.findViewById(R.id.rv_near_by);
         rv_near_by.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        rv_near_by.setAdapter(new NearByAdapter(getActivity()));
+        rv_near_by.setAdapter(new NearByAdapter(getActivity(), SinglePlaceDetailActivity.nearByList));
         return view;
     }
 

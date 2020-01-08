@@ -11,7 +11,6 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.cinqueterreriveria.R;
 
-import java.util.ArrayList;
 
 public class CustomPagerAdapter extends PagerAdapter {
 

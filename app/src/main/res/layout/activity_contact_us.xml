@@ -17,7 +17,7 @@
             android:id="@+id/iv_contact_us"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_150sdp"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             android:src="@drawable/dummy" />
 
         <TextView

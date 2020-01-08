@@ -1,12 +1,10 @@
 package com.cinqueterreriveria.adapters;
 
 import android.content.Context;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -59,26 +57,15 @@ public class FAQsAdapter extends RecyclerView.Adapter<FAQsAdapter.MyViewHolder> 
                 holder.ll_faq.setBackgroundResource(R.drawable.strok_grey_light);
                 holder.rl_bottom_rect.setBackgroundResource(R.drawable.stroke_grey_bottom_rect);
                 holder.tv_expand_content.setVisibility(View.VISIBLE);
-                holder.iv_expand.setImageResource(R.drawable.ic_down_arrow);
+                holder.iv_expand.setImageResource(R.drawable.ic_chevron_upwards_arrow);
 
                 holder.tv_expand_content.getSettings().setJavaScriptEnabled(true);
                 holder.tv_expand_content.loadDataWithBaseURL(null, detail.get(position).getContent(), "text/html", "utf-8", null);
 
             }
-                /*holder.ll_faq.setBackgroundResource(R.drawable.strok_grey_light);
-                holder.rl_bottom_rect.setBackgroundResource(R.drawable.stroke_grey_bottom_rect);
-                holder.tv_expand_content.setVisibility(View.VISIBLE);
-                holder.iv_expand.setImageResource(R.drawable.ic_down_arrow);
-
-                holder.tv_expand_content.getSettings().setJavaScriptEnabled(true);
-                holder.tv_expand_content.loadDataWithBaseURL(null, detail.get(position).getContent(), "text/html", "utf-8", null);*/
 
         }
-       /* else
-        {
-            holder.rl_bottom_rect.setBackgroundResource(R.drawable.strok_grey_light);
-            holder.tv_expand_content.setVisibility(View.GONE);
-        }*/
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

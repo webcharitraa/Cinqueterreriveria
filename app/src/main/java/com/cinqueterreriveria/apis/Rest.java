@@ -1,12 +1,6 @@
 package com.cinqueterreriveria.apis;
 
-import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.view.Window;
 
-import com.cinqueterreriveria.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

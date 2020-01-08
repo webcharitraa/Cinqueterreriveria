@@ -51,4 +51,9 @@ public class BookingSuccessfulActivity extends AppCompatActivity {
             }
         }, 3000);
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

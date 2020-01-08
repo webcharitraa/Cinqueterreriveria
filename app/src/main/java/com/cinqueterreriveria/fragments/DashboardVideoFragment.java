@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.cinqueterreriveria.R;
 import com.cinqueterreriveria.activities.DashboardActivity;
-import com.cinqueterreriveria.adapters.BlogAdapter;
 import com.cinqueterreriveria.adapters.DashboardVideoAdapter;
 
 /**

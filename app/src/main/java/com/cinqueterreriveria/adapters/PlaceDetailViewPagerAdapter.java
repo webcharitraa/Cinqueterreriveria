@@ -1,6 +1,7 @@
 package com.cinqueterreriveria.adapters;
 
 import android.content.Context;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -8,15 +9,16 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.cinqueterreriveria.fragments.AmenitiesFragment;
 import com.cinqueterreriveria.fragments.DashBoardReachUsFragment;
-import com.cinqueterreriveria.fragments.DashboardBlogFragment;
-import com.cinqueterreriveria.fragments.DashboardVideoFragment;
+
 import com.cinqueterreriveria.fragments.ExtraChargesFragment;
 import com.cinqueterreriveria.fragments.FloorPlanFragment;
 import com.cinqueterreriveria.fragments.NearByFragment;
 import com.cinqueterreriveria.fragments.OurRulesFragment;
+import com.cinqueterreriveria.fragments.ReviewFragment;
 
 public class PlaceDetailViewPagerAdapter extends FragmentPagerAdapter {
     Context context;
+    int mCurrentPosition=-1;
 
     public PlaceDetailViewPagerAdapter(Context context, FragmentManager manager) {
         super(manager);
@@ -43,7 +45,7 @@ public class PlaceDetailViewPagerAdapter extends FragmentPagerAdapter {
             fragment = new FloorPlanFragment();
         }else if (position == 4)
         {
-            fragment = new DashBoardReachUsFragment();
+            fragment = new ReviewFragment();
         }
         else if (position == 5)
         {
@@ -87,4 +89,17 @@ public class PlaceDetailViewPagerAdapter extends FragmentPagerAdapter {
 
         return title;
     }
+    @Override
+    public void setPrimaryItem(ViewGroup container, int position, Object object) {
+        super.setPrimaryItem(container, position, object);
+        if (position != mCurrentPosition) {
+            Fragment fragment = (Fragment) object;
+            CustomPagerFoeSinglePlace pager = (CustomPagerFoeSinglePlace) container;
+            if (fragment != null && fragment.getView() != null) {
+                mCurrentPosition = position;
+                pager.measureCurrentView(fragment.getView());
+            }
+        }
+    }
+
 }

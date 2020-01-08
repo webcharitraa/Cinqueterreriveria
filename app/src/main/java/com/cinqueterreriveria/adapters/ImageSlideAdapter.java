@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
@@ -16,7 +15,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.cinqueterreriveria.R;
 import com.cinqueterreriveria.activities.SinglePlaceDetailActivity;
-import com.cinqueterreriveria.models.PlaceListModel;
 
 import java.util.List;
 
@@ -26,12 +24,13 @@ public class ImageSlideAdapter extends PagerAdapter {
     List<String> gallery;
     String status;
     int[] images = {R.drawable.dummy, R.drawable.dummy, R.drawable.dummy};
+    String slug;
 
-
-    public ImageSlideAdapter(Context context, List<String> gallery, String status) {
+    public ImageSlideAdapter(Context context, List<String> gallery, String status, String slug) {
         this.mContext = context;
         this.gallery = gallery;
         this.status = status;
+        this.slug = slug;
     }
 
     @Override
@@ -47,7 +46,8 @@ public class ImageSlideAdapter extends PagerAdapter {
         iv_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.startActivity(new Intent(mContext, SinglePlaceDetailActivity.class));
+                mContext.startActivity(new Intent(mContext, SinglePlaceDetailActivity.class).
+                        putExtra("slug",slug));
 
             }
         });
@@ -55,7 +55,6 @@ public class ImageSlideAdapter extends PagerAdapter {
 
         RequestOptions simpleOptions = new RequestOptions()
                 .centerCrop()
-
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
         Glide.with(mContext).load(gallery.get(position)).apply(simpleOptions).into(iv_image);
 

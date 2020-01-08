@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.cinqueterreriveria.R;
 import com.cinqueterreriveria.adapters.BlogDetailPagerAdapter;
-import com.cinqueterreriveria.adapters.NonSwipeableViewPager;
 import com.google.android.material.tabs.TabLayout;
 
 public class SingleBlogDetailActivity extends AppCompatActivity {

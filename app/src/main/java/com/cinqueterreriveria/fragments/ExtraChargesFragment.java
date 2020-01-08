@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cinqueterreriveria.R;
+import com.cinqueterreriveria.activities.SinglePlaceDetailActivity;
 import com.cinqueterreriveria.adapters.ExtraChargesAdapter;
 
 /**
@@ -32,7 +33,7 @@ RecyclerView rv_ectra_charges;
         View view= inflater.inflate(R.layout.fragment_extra_charges, container, false);
         rv_ectra_charges=view.findViewById(R.id.rv_ectra_charges);
         rv_ectra_charges.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rv_ectra_charges.setAdapter(new ExtraChargesAdapter(getActivity()));
+        rv_ectra_charges.setAdapter(new ExtraChargesAdapter(getActivity(), SinglePlaceDetailActivity.ectraChargesList));
         return view;
     }
 

@@ -7,6 +7,7 @@ import java.util.List;
 
 public class DashboardModel {
 
+
     public class Activity {
 
         @SerializedName("title")
@@ -83,6 +84,8 @@ public class DashboardModel {
         }
 
     }
+
+
 
 
         @SerializedName("success")
@@ -217,6 +220,7 @@ public class DashboardModel {
         public void setBannerImage(String bannerImage) {
             this.bannerImage = bannerImage;
         }
+
 
 
 

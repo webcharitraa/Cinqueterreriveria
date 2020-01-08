@@ -45,7 +45,7 @@
                         <!--<ImageView
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_120sdp"
-                            android:scaleType="fitXY"
+                            android:scaleType="centerCrop"
                             android:src="@drawable/dummy" />-->
 
                         <RelativeLayout
@@ -317,7 +317,7 @@
                         <!--<ImageView
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_120sdp"
-                            android:scaleType="fitXY"
+                            android:scaleType="centerCrop"
                             android:src="@drawable/dummy" />-->
 
                         <RelativeLayout
@@ -581,6 +581,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
             android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_no_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="No Data Available"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:textSize="@dimen/_16ssp"/>
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

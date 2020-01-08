@@ -5,8 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
+
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.view.Window;
@@ -17,9 +16,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.airbnb.lottie.LottieProperty;
 import com.airbnb.lottie.SimpleColorFilter;
 import com.airbnb.lottie.model.KeyPath;
-import com.airbnb.lottie.value.LottieFrameInfo;
 import com.airbnb.lottie.value.LottieValueCallback;
-import com.airbnb.lottie.value.SimpleLottieValueCallback;
 import com.cinqueterreriveria.R;
 
 public class TransparentDialog {

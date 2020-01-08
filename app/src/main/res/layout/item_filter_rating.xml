@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_radio"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <!--<RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">-->
+
+
+
+    <RadioButton
+        android:id="@+id/tv_category_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
+
+        android:layout_centerVertical="true"
+        />
+
+    <TextView
+        android:id="@+id/tv_radio_text"
+        android:layout_toEndOf="@+id/tv_category_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/_5sdp"
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/dark_grey"
+        android:text="jdfhdfs"/>
+
+    <!--  </RadioGroup>
+
+  -->
+    <RatingBar
+        android:id="@+id/rating_"
+        style="@style/CustomRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/tv_radio_text"
+        android:backgroundTint="@color/light_grey"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:progressDrawable="@drawable/rating_layerlist"
+        android:rating="5"
+        android:stepSize="0.5"
+        android:visibility="visible" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/light_grey" />
+
+
+</RelativeLayout>

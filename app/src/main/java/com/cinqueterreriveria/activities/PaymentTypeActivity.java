@@ -18,6 +18,7 @@ public class PaymentTypeActivity extends AppCompatActivity implements View.OnCli
     TextView tv_back,tv_app_bar_title;
     Button bt_direct_book,bt_preBooking,bt_request_booking;
     LinearLayout ll_back;
+
     View v;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class PaymentTypeActivity extends AppCompatActivity implements View.OnCli
         ll_back=findViewById(R.id.ll_back);
         v=findViewById(R.id.v);
         v.setVisibility(View.VISIBLE);
+        tv_app_bar_title.setVisibility(View.VISIBLE);
         tv_app_bar_title.setText("Payment Types");
 
         bt_direct_book.setOnClickListener(this);
@@ -53,10 +55,20 @@ public class PaymentTypeActivity extends AppCompatActivity implements View.OnCli
         switch (view.getId())
         {
             case R.id.bt_direct_book:
-                startActivity(new Intent(PaymentTypeActivity.this,PaymentMethodActivity.class));
+                Intent intent=new Intent(PaymentTypeActivity.this,PaymentMethodActivity.class);
+                Bundle bundle = getIntent().getExtras();
+                if (bundle != null) {
+                    intent.putExtras(bundle);
+                }
+                startActivity(intent);
                 break;
             case R.id.bt_preBooking:
-                startActivity(new Intent(PaymentTypeActivity.this,PaymentMethodActivity.class));
+                Intent intent1=new Intent(PaymentTypeActivity.this,PaymentMethodActivity.class);
+                Bundle bundle1 = getIntent().getExtras();
+                if (bundle1 != null) {
+                    intent1.putExtras(bundle1);
+                }
+                startActivity(intent1);
                 break;
                 case R.id.bt_request_booking:
                 startActivity(new Intent(PaymentTypeActivity.this,BookingSuccessfulActivity.class));
@@ -66,4 +78,6 @@ public class PaymentTypeActivity extends AppCompatActivity implements View.OnCli
                 break;
         }
     }
+
+
 }

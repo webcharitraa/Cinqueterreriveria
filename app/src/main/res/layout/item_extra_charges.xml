@@ -15,10 +15,13 @@
             android:background="@color/light_grey">
 
             <TextView
+                android:id="@+id/tv_extra_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/mid_season"
+                android:padding="@dimen/_4sdp"
+
                 android:textColor="@color/orange"
 
                 android:textStyle="bold" />
@@ -38,9 +41,11 @@
             android:background="@color/light_grey">
 
             <TextView
+                android:id="@+id/tv_amoun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:padding="@dimen/_4sdp"
 
 
                 android:text="€ 500"

@@ -1,7 +1,6 @@
 package com.cinqueterreriveria.fragments;
 
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cinqueterreriveria.R;
+import com.cinqueterreriveria.activities.SinglePlaceDetailActivity;
 import com.cinqueterreriveria.adapters.AmenitiesAdapter;
 
 /**
@@ -36,7 +36,7 @@ public class AmenitiesFragment extends Fragment {
         rv_amenities = view.findViewById(R.id.rv_amenities);
 
         rv_amenities.setLayoutManager(new GridLayoutManager(getActivity(),2));
-        rv_amenities.setAdapter(new AmenitiesAdapter(getActivity()));
+        rv_amenities.setAdapter(new AmenitiesAdapter(getActivity(), SinglePlaceDetailActivity.amentiesList));
         return view;
     }
 

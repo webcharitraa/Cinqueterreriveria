@@ -4,12 +4,13 @@
     android:orientation="vertical"
     android:layout_width="@dimen/_180sdp"
     android:layout_margin="@dimen/_10sdp"
-    android:layout_height="wrap_content">
+    android:layout_height="@dimen/_150sdp">
 
     <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/riv_nearby"
         android:layout_width="@dimen/_180sdp"
-        android:layout_height="@dimen/_150sdp"
-        android:scaleType="fitXY"
+        android:layout_height="@dimen/_110sdp"
+        android:scaleType="centerCrop"
         app:riv_corner_radius="10dip"
         app:riv_mutate_background="true"
         app:riv_oval="false"
@@ -17,6 +18,7 @@
         android:src="@drawable/dummy"/>
 
     <TextView
+        android:id="@+id/tv_near_by"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/opera_festival"

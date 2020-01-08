@@ -1,6 +1,7 @@
 package com.cinqueterreriveria.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.cinqueterreriveria.R;
+import com.cinqueterreriveria.activities.SinglePlaceDetailActivity;
 import com.cinqueterreriveria.models.LuxuryCollectionModel;
 import com.makeramen.roundedimageview.RoundedImageView;
 
@@ -38,7 +40,7 @@ public class LuxuryCollectionAdapter extends RecyclerView.Adapter<LuxuryCollecti
 
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         RequestOptions simpleOptions = new RequestOptions()
                 .centerCrop()
 
@@ -49,6 +51,15 @@ public class LuxuryCollectionAdapter extends RecyclerView.Adapter<LuxuryCollecti
         holder.tv_location.setText(detail.get(position).getLocation());
         holder.tv_descrip.setText(detail.get(position).getShortDesc());
         holder.bt_book.setText(detail.get(position).getPrice()+" Book Now");
+
+        holder.bt_book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context, SinglePlaceDetailActivity.class).
+                        putExtra("slug",detail.get(position).getSlug()));
+                        /*.putExtra("rating",detail.get(position).getRating()*/
+            }
+        });
     }
 
     @Override

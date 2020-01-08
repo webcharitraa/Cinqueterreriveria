@@ -19,7 +19,6 @@ import com.cinqueterreriveria.apis.ApiConstents;
 import com.cinqueterreriveria.apis.Rest;
 import com.cinqueterreriveria.models.PDFModel;
 
-import org.w3c.dom.Text;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -8,7 +8,6 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -48,6 +47,7 @@ public class BlogsActivity extends AppCompatActivity implements View.OnClickList
         tv_back.setText("Back");
 
         ll_back.setOnClickListener(this);
+
         view_pager_blog_detail.setAdapter(new BlogDetailPagerAdapter(getSupportFragmentManager()));
         blog_tab.setupWithViewPager(view_pager_blog_detail);
 
@@ -61,4 +61,6 @@ public class BlogsActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
+
+
 }

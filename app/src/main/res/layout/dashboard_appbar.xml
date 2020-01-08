@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10ssp"
-            android:text="Cinqueterreriveria"
+            android:text="@string/cinqueterreriveria"
             android:layout_centerInParent="true"
             android:textStyle="bold"
             android:textColor="@color/dark_grey"

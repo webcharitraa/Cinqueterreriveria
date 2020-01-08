@@ -1,6 +1,7 @@
 package com.cinqueterreriveria.adapters;
 
 import android.content.Context;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,7 @@ import com.cinqueterreriveria.fragments.DashboardVideoFragment;
 
 public class DashboardViewPagerAdapter extends FragmentPagerAdapter {
     Context context;
+    int mCurrentPosition=-1;
 
     public DashboardViewPagerAdapter(FragmentManager manager) {
         super(manager);
@@ -62,6 +64,20 @@ public class DashboardViewPagerAdapter extends FragmentPagerAdapter {
         }
         return title;
     }
+
+   /* @Override
+    public void setPrimaryItem(ViewGroup container, int position, Object object) {
+        super.setPrimaryItem(container, position, object);
+        if (position != mCurrentPosition) {
+            Fragment fragment = (Fragment) object;
+            NonSwipeableViewPager pager = (NonSwipeableViewPager) container;
+            if (fragment != null && fragment.getView() != null) {
+                mCurrentPosition = position;
+                pager.measureCurrentView(fragment.getView());
+            }
+        }
+    }*/
+
 }
 
 

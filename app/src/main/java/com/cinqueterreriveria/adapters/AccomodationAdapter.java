@@ -49,7 +49,7 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
             @Override
             public void onClick(View view) {
                 context.startActivity(new Intent(context, PlaceListActivity.class).
-                        putExtra("place_name",location.get(position).getSlug()));
+                        putExtra("place_name",location.get(position).getSlug()).putExtra("flag","place"));
             }
         });
     }

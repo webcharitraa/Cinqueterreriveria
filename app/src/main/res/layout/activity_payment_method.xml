@@ -57,11 +57,14 @@
             android:layout_marginTop="@dimen/_20sdp">
 
             <RadioButton
+                android:id="@+id/rb_wire_transfer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/bank_wire_transfer"/>
 
             <RadioButton
+                android:id="@+id/rb_debit_credit"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
@@ -70,6 +73,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/rl_next"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginTop="@dimen/_30sdp"

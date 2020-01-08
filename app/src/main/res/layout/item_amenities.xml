@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_margin="@dimen/_10sdp"
     android:layout_height="wrap_content">
 
@@ -11,10 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:src="@drawable/ic_placeholder"
-        android:tint="@color/orange"/>
+        android:src="@drawable/solid_round_orange"
+        />
 
     <TextView
+        android:id="@+id/tv_amenties"
         android:layout_toEndOf="@+id/iv_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

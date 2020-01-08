@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import com.cinqueterreriveria.R;
 import com.cinqueterreriveria.activities.DashboardActivity;
 import com.cinqueterreriveria.adapters.DashBoardReachAdapter;
-import com.cinqueterreriveria.adapters.DashboardVideoAdapter;
 
 /**
  * A simple {@link Fragment} subclass.

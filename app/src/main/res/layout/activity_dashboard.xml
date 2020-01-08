@@ -17,6 +17,7 @@
         <include layout="@layout/dashboard_appbar" />
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -67,7 +68,7 @@
                                     android:layout_margin="@dimen/_10sdp"
                                     android:background="@drawable/solid_light_grey"
                                     android:orientation="vertical"
-                                    android:scaleType="fitXY"
+                                    android:scaleType="centerCrop"
                                     android:src="@drawable/dummy" />
 
                                 <TextView
@@ -414,6 +415,7 @@
                         </LinearLayout>
 
                         <Button
+                            android:id="@+id/bt_search"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_30sdp"
                             android:layout_marginStart="@dimen/_20sdp"
@@ -471,7 +473,7 @@
                             android:id="@+id/iv_dashboard_banner"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:scaleType="fitXY"
+                            android:scaleType="centerCrop"
                             android:src="@drawable/dummy" />
 
                         <TextView
@@ -545,13 +547,39 @@
                         android:id="@+id/tab_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:tabMode="fixed"
+                        app:tabPaddingStart="-1dp"
+                        app:tabPaddingEnd="-1dp"
+                        android:layout_margin="@dimen/_5sdp"
+                        app:tabInlineLabel="false"
+                        app:tabIndicatorColor="@color/orange"
+                        app:tabTextColor="@color/dark_grey"
+                        app:tabIndicatorHeight="4dp"
+                        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                        app:tabSelectedTextColor="@color/dark_grey"
+                        app:tabBackground="@null"/>
+                        <!--android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         app:tabIndicatorColor="@color/orange"
                         app:tabIndicatorHeight="4dp"
                         app:tabInlineLabel="false"
                         app:tabMode="fixed"
                         app:tabSelectedTextColor="@color/dark_grey"
                         app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-                        app:tabTextColor="@color/dark_grey" />
+                        app:tabTextColor="@color/dark_grey"-->
+
+                   <!-- <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/blog_tab"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        app:tabMode="scrollable"
+                        app:tabInlineLabel="false"
+                        app:tabTextColor="@color/white_medium_opacity"
+                        app:tabIndicatorHeight="0dp"
+                        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                        app:tabSelectedTextColor="@color/white_medium_opacity"
+                        app:tabBackground="@drawable/tab_selection"/>-->
 
                     <View
                         android:layout_width="match_parent"

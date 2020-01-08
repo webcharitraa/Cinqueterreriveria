@@ -1,8 +1,10 @@
 package com.cinqueterreriveria.activities;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -63,16 +65,17 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
         dialog.progressDialog(context);
 
         call.enqueue(new Callback<ContactUsModel>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onResponse(Call<ContactUsModel> call, Response<ContactUsModel> response) {
                 dialog.stopProgressDialog();
+
                 if (response.isSuccessful()) {
                     if (response.body().getSuccess() == true) {
                         Glide.with(context).load(response.body().getDetail().getBannerImage()).into(iv_contact_us);
                         webview.getSettings().setJavaScriptEnabled(true);
                         tv_contact_us_title.setText(response.body().getDetail().getBannerTitle());
-
-                        webview.loadDataWithBaseURL("https://www.cinqueterreriviera.com", response.body().getDetail().getContent(), "text/html", "utf-8", null);
+                        webview.loadDataWithBaseURL("https://www.cinqueterreriviera.com",response.body().getDetail().getContent(), "text/html", "utf-8", null);
 
                     } else {
 
@@ -85,6 +88,5 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
 
             }
         });
-
     }
 }

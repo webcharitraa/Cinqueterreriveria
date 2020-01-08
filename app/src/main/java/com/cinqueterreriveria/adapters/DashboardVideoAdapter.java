@@ -2,7 +2,9 @@ package com.cinqueterreriveria.adapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +17,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,9 +24,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.cinqueterreriveria.R;
+import com.cinqueterreriveria.activities.PlayVideoActivity;
 import com.cinqueterreriveria.models.DashboardModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DashboardVideoAdapter extends RecyclerView.Adapter<DashboardVideoAdapter.MyViewHolder> {
@@ -61,13 +62,17 @@ public class DashboardVideoAdapter extends RecyclerView.Adapter<DashboardVideoAd
             @Override
             public void onClick(View view) {
 
-                final AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
+                //context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(videosList.get(position).getVideo())));
+                context.startActivity(new Intent(context, PlayVideoActivity.class).
+                        putExtra("video", videosList.get(position).getVideo()));
+
+                /*final AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
                 View view2 = LayoutInflater.from(context).inflate(R.layout.popup_video_view, null);
-                ImageView iv_canecl_video=view2.findViewById(R.id.iv_canecl_video);
-                WebView videoview=view2.findViewById(R.id.videoview);
+                ImageView iv_canecl_video = view2.findViewById(R.id.iv_canecl_video);
+                WebView videoview = view2.findViewById(R.id.videoview);
                 builder2.setView(view2);
 
-                String vimeoVideo = "<html><body><iframe width=\"420\" height=\"550\" src="+videosList.get(position).getVideo()+ "frameborder=\"0\" allowfullscreen></iframe></body></html>";
+               *//* String vimeoVideo = "<html><body><iframe width=\"420\" height=\"550\" src=" + videosList.get(position).getVideo() + "frameborder=\"0\" allowfullscreen></iframe></body></html>";
                 videoview.setWebViewClient(new WebViewClient() {
                     @Override
                     public boolean shouldOverrideUrlLoading(WebView webView, WebResourceRequest request) {
@@ -80,7 +85,7 @@ public class DashboardVideoAdapter extends RecyclerView.Adapter<DashboardVideoAd
                 });
                 WebSettings webSettings = videoview.getSettings();
                 webSettings.setJavaScriptEnabled(true);
-                videoview.loadData(vimeoVideo, "text/html", "utf-8");
+                videoview.loadData(vimeoVideo, "text/html", "utf-8");*//*
 
 
                 // how plugin is enabled change in API 8
@@ -90,12 +95,12 @@ public class DashboardVideoAdapter extends RecyclerView.Adapter<DashboardVideoAd
                     videoview.getSettings().setPluginState(WebSettings.PluginState.ON);
                 }
                 videoview.loadUrl(videosList.get(position).getVideo());
-              /*  MediaController videoMediaController = new MediaController(context);
+               *//* MediaController videoMediaController = new MediaController(context);
                 videoview.setVideoPath(videosList.get(position).getVideo());
                 videoMediaController.setMediaPlayer(videoview);
                 videoview.setMediaController(videoMediaController);
                 videoview.requestFocus();
-                videoview.start();*/
+                videoview.start();*//*
 
                 iv_canecl_video.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -107,6 +112,7 @@ public class DashboardVideoAdapter extends RecyclerView.Adapter<DashboardVideoAd
                 dialog.setCancelable(true);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog.show();
+            }*/
             }
         });
     }
@@ -121,11 +127,12 @@ public class DashboardVideoAdapter extends RecyclerView.Adapter<DashboardVideoAd
         ImageView iv_dashboard_video;
         Button bt_video_detail;
         TextView tv_dashboard_video_title;
+
         public MyViewHolder(View view) {
             super(view);
-            iv_dashboard_video=view.findViewById(R.id.iv_dashboard_video);
-            tv_dashboard_video_title=view.findViewById(R.id.tv_dashboard_video_title);
-            bt_video_detail=view.findViewById(R.id.bt_video_detail);
+            iv_dashboard_video = view.findViewById(R.id.iv_dashboard_video);
+            tv_dashboard_video_title = view.findViewById(R.id.tv_dashboard_video_title);
+            bt_video_detail = view.findViewById(R.id.bt_video_detail);
         }
     }
 }

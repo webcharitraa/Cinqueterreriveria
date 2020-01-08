@@ -3,6 +3,7 @@ package com.cinqueterreriveria.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,15 +18,18 @@ import android.os.Handler;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,9 +62,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -88,17 +96,21 @@ public class DashboardActivity extends AppCompatActivity
     ExperienceAdapter experienceAdapter;
     ServicesAdapter servicesAdapter;
     PrefStore prefStore;
-    String date;
+    String date1, adultcount, childcount;
+    Button bt_search;
+    NestedScrollView nested_scroll;
     TransparentDialog dialog = new TransparentDialog();
     public static List<DashboardModel.Blog> blogsList;
     public static List<DashboardModel.Video> videosList;
     public static List<DashboardModel.HowReach> howReachList;
-    String[] child = {"Child","1 ", "2 ", "3 ", "4 ", "5 "};
-    String[] adult= {"Adult","1 ", "2 ", "3 ", "4 ", "5 "};
+    String[] child = {"Child", "1 ", "2 ", "3 ", "4 ", "5 ","6","7","8","9","10","11","12"};
+    String[] adult = {"Adult", "1 ", "2 ", "3 ", "4 ", "5 ","6","7","8","9","10","11","12"};
+    String[] location = {"Monterosso", "Vernazza", "Manarola", "La Spezia"};
     List<String> places = new ArrayList<>();
-    Spinner search_place_spinner,adult_spinner,child_spinner;
+    Spinner search_place_spinner, adult_spinner, child_spinner;
     LinearLayout ll_search_box, rl_dashboard_appbar, ll_lay;
-    ArrayList<Integer> personImages = new ArrayList<>(Arrays.asList(R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy, R.drawable.dummy));
+    SupportMapFragment mapFragment;
+    int locationId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,9 +166,10 @@ public class DashboardActivity extends AppCompatActivity
         tv_dashboard_check_out = findViewById(R.id.tv_dashboard_check_out);
         adult_spinner = findViewById(R.id.adult_spinner);
         child_spinner = findViewById(R.id.child_spinner);
+        nested_scroll = findViewById(R.id.nested_scroll);
+        bt_search = findViewById(R.id.bt_search);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
         rv_book_uniques_experience.setHasFixedSize(true);
 
@@ -190,23 +203,14 @@ public class DashboardActivity extends AppCompatActivity
         tv_profile.setOnClickListener(this);
         tv_clock_in.setOnClickListener(this);
         tv_dashboard_check_out.setOnClickListener(this);
+        bt_search.setOnClickListener(this);
 
-        //rv_name_of_places.setAdapter(new PlacesAdapter(context));
-
-        /*setupViewPager(viewpager);
-         tab_layout.setupWithViewPager(viewpager);*/
-
-        //DashboardViewPagerAdapter viewPagerAdapter = new DashboardViewPagerAdapter(context, getSupportFragmentManager());
-
-        //viewpager.setOffscreenPageLimit(3);
-        //viewpager.setCurrentItem(0);
         final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
         viewpager.setPageMargin(pageMargin);
 
         //tab_layout.getSelectedTabPosition();
         //viewpager.setOffscreenPageLimit(0);
         tab_layout.setupWithViewPager(viewpager);
-
 
         dashboardApi();
     }
@@ -220,7 +224,42 @@ public class DashboardActivity extends AppCompatActivity
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.bt_search:
+                adultcount = adult_spinner.getSelectedItem().toString();
+                childcount = child_spinner.getSelectedItem().toString();
+
+                if (search_place_spinner.getSelectedItem().toString().equals("Monterosso")) {
+                    locationId = 3887;
+                }
+                if (search_place_spinner.getSelectedItem().toString().equals("Vernazza")) {
+                    locationId = 21672;
+                }
+                if (search_place_spinner.getSelectedItem().toString().equals("Manarola")) {
+                    locationId = 25302;
+                }
+                if (search_place_spinner.getSelectedItem().toString().equals("La Spezia")) {
+                    locationId = 3701;
+                }
+
+                if (adult_spinner.getSelectedItem().toString().equals("Adult")) {
+                    adultcount = "";
+                }
+                if (child_spinner.getSelectedItem().toString().equals("Child")) {
+                    childcount = "";
+                }
+                Log.d("TAG", String.valueOf(locationId));
+                context.startActivity(new Intent(context, PlaceListActivity.class).
+                        putExtra("flag", "search").
+                        putExtra("place_name", "").
+                        putExtra("locationId", String.valueOf(locationId)).
+                        putExtra("DateFron", tv_clock_in.getText().toString()).
+                        putExtra("DateTo", tv_dashboard_check_out.getText().toString())
+                        .putExtra("children", childcount).
+                                putExtra("adults", adultcount));
+
+                break;
             case R.id.iv_search:
+                nested_scroll.fullScroll(ScrollView.FOCUS_UP);
                 animSlideDown = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.slide_down);
 
@@ -245,7 +284,6 @@ public class DashboardActivity extends AppCompatActivity
                 animSlideUp = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.slide_up);
                 ll_search_box.startAnimation(animSlideUp);
-
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -289,7 +327,7 @@ public class DashboardActivity extends AppCompatActivity
                     rv_accomodation.setVisibility(View.GONE);
                     //slideUp(rv_accomodation);
                 } else {
-                   // accomodationAdapter.notifyDataSetChanged();
+                    // accomodationAdapter.notifyDataSetChanged();
                     rv_accomodation.setVisibility(View.VISIBLE);
                     //slideUp(rv_accomodation);
                     rv_experience.setVisibility(View.GONE);
@@ -344,7 +382,7 @@ public class DashboardActivity extends AppCompatActivity
                     // rv_accomodation.setBackgroundColor(getResources().getColor(R.color.orange));
                     rv_services.setVisibility(View.GONE);
                 } else {
-                  //  servicesAdapter.notifyDataSetChanged();
+                    //  servicesAdapter.notifyDataSetChanged();
                     rv_services.setVisibility(View.VISIBLE);
                     rv_accomodation.setVisibility(View.GONE);
                     rv_experience.setVisibility(View.GONE);
@@ -414,7 +452,6 @@ public class DashboardActivity extends AppCompatActivity
                 tv_experience.setTextColor(getResources().getColor(R.color.dark_grey));
                 tv_experience.setBackgroundColor(getResources().getColor(R.color.white));
                 startActivity(new Intent(context, FAQActivity.class));
-
                 break;
 
             case R.id.tv_MyAccount:
@@ -445,7 +482,6 @@ public class DashboardActivity extends AppCompatActivity
                 prefStore.setBoolean("login_status", false);
                 startActivity(new Intent(context, LoginActivity.class));
                 break;
-
         }
     }
 
@@ -460,11 +496,21 @@ public class DashboardActivity extends AppCompatActivity
         dashboard_calender.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                date = day + "-" + month + "-" + year;
+                month = month + 1;
+                date1 = day + "/" + month + "/" + year;
+                DateFormat outputFormat = new SimpleDateFormat("YYYY-MM-dd", Locale.US);
+                DateFormat inputFormat = new SimpleDateFormat("dd/M/yyyy", Locale.US);
 
-                tv_clock_in.setText(date);
+                Date date = null;
+                try {
+                    date = inputFormat.parse(date1);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                String outputText = outputFormat.format(date);
+
+                tv_clock_in.setText(outputText);
                 dialog1.dismiss();
-
 
             }
         });
@@ -495,11 +541,22 @@ public class DashboardActivity extends AppCompatActivity
         tv_experience.setBackgroundColor(getResources().getColor(R.color.white));
         tv_MyAccount.setTextColor(getResources().getColor(R.color.dark_grey));
         tv_MyAccount.setBackgroundColor(getResources().getColor(R.color.white));
+
+       /* v_appbar.setVisibility(View.VISIBLE);
+        ll_search_box.setVisibility(View.GONE);
+        iv_search.setVisibility(View.VISIBLE);
+        profile_image.setVisibility(View.GONE);
+        tv_cinque.setTextColor(getResources().getColor(R.color.dark_grey));
+
+        rl_dashboard_appbar.setBackgroundColor(getResources().getColor(R.color.white));
+        iv_menu.setColorFilter(getResources().getColor(R.color.orange));*/
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        Log.e("Lat", lat + "  " + lng);
+        //LatLng UCA = new LatLng(44.134660, 9.683730);
         LatLng UCA = new LatLng(lat, lng);
         BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.logo);
         Bitmap b = bitmapdraw.getBitmap();
@@ -533,7 +590,8 @@ public class DashboardActivity extends AppCompatActivity
                             places.add(response.body().getLocation().get(i).getTitle());
 
                         }
-                        ArrayAdapter<String> a = new ArrayAdapter<String>(context, R.layout.item_search_spinner, places);
+                        mapFragment.getMapAsync(DashboardActivity.this);
+                        ArrayAdapter<String> a = new ArrayAdapter<String>(context, R.layout.item_search_spinner, location);
                         search_place_spinner.setPrompt("Select");
                         search_place_spinner.setPopupBackgroundDrawable(getResources().getDrawable(R.drawable.solid_orange_rectangle));
                         search_place_spinner.setAdapter(a);
@@ -584,4 +642,8 @@ public class DashboardActivity extends AppCompatActivity
             }
         });
     }
+
+
+
+
 }
