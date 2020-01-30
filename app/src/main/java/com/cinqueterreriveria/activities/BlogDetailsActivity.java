@@ -25,7 +25,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BlogDetailsActivity extends AppCompatActivity implements View.OnClickListener{
-
     ImageView iv_what_to_do_detail;
     TextView tv_what_to_do_detail_title,tv_app_bar_title;
     Intent intent;
@@ -55,12 +54,10 @@ public class BlogDetailsActivity extends AppCompatActivity implements View.OnCli
 
         blogDetailApi();
     }
-
     private void blogDetailApi()
     {
         Call<WhatToDoDetailModel> call= Rest.getRetrofit().blogDetail(ApiConstents.SECRET_KEY,
                 intent.getStringExtra("what_name"));
-
         dialog.progressDialog(context);
         call.enqueue(new Callback<WhatToDoDetailModel>() {
             @Override
@@ -79,16 +76,13 @@ public class BlogDetailsActivity extends AppCompatActivity implements View.OnCli
                         {
                             iv_what_to_do_detail.setVisibility(View.VISIBLE);
                             Glide.with(context).load(response.body().getDetail().getBannerImage()).apply(simpleOptions).into(iv_what_to_do_detail);
-
                         }
                         else {
                             iv_what_to_do_detail.setVisibility(View.GONE);
                         }
                         tv_what_to_do_detail_title.setText(response.body().getDetail().getBannerTitle());
                         tv_what_to_do_description.loadDataWithBaseURL(null, response.body().getDetail().getContent(), "text/html", "utf-8", null);
-
-                        // tv_what_to_do_description.loadData(response.body().getDetail().getContent(), "text/html", "utf-8");
-
+                        //tv_what_to_do_description.loadData(response.body().getDetail().getContent(), "text/html", "utf-8");
                     }
                 }
             }
@@ -96,11 +90,9 @@ public class BlogDetailsActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onFailure(Call<WhatToDoDetailModel> call, Throwable t) {
                 dialog.stopProgressDialog();
-
             }
         });
     }
-
 
     @Override
     public void onClick(View view) {

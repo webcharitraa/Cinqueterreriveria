@@ -16,7 +16,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.cinqueterreriveria.R;
 import com.cinqueterreriveria.activities.SinglePlaceDetailActivity;
 import com.cinqueterreriveria.models.HomeSearchModel;
-import com.cinqueterreriveria.models.PlaceListModel;
 
 import java.util.List;
 

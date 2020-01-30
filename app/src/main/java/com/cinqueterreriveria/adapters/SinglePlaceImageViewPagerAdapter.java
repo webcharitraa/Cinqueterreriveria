@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
@@ -63,7 +64,6 @@ public class SinglePlaceImageViewPagerAdapter extends PagerAdapter {
         Glide.with(context).load(images.get(position)).apply(simpleOptions).into(iv_single_page_images);
         //iv_single_page_images.setImageResource(images[position]);
 
-
         iv_single_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +73,6 @@ public class SinglePlaceImageViewPagerAdapter extends PagerAdapter {
         iv_single_page_images.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 final AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
                 View view2 = LayoutInflater.from(context).inflate(R.layout.popup_image, null);
                 ImageView iv_cancel_image = view2.findViewById(R.id.iv_cancel_image);
@@ -105,7 +104,6 @@ public class SinglePlaceImageViewPagerAdapter extends PagerAdapter {
                         iv_single_place_image.setCurrentItem(tab);
                     }
                 });
-
                 iv_single_place_image.setAdapter(new SingleImageSliderAdapter(context, images));
 
                 iv_cancel_image.setOnClickListener(new View.OnClickListener() {

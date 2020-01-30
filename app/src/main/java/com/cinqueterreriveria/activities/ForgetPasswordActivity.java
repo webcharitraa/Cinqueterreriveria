@@ -17,7 +17,6 @@ import android.widget.RelativeLayout;
 import com.cinqueterreriveria.R;
 
 public class ForgetPasswordActivity extends AppCompatActivity implements View.OnClickListener {
-
     Context context = this;
     Button bt_forget_next;
     AlertDialog dialog1 = null;
@@ -35,13 +34,11 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
     }
 
     private void initUis() {
-
         bt_forget_next = findViewById(R.id.bt_forget_next);
         ll_back = findViewById(R.id.ll_back);
 
         bt_forget_next.setOnClickListener(this);
         ll_back.setOnClickListener(this);
-
     }
 
     @Override
@@ -53,9 +50,7 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
                 View view2 = LayoutInflater.from(context).inflate(R.layout.popup_confirmation, null);
                 RelativeLayout rl_confirm = view2.findViewById(R.id.rl_confirm);
 
-
                 builder2.setView(view2);
-
 
                 rl_confirm.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -68,7 +63,6 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
                 dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog1.show();
                 break;
-
             case R.id.ll_back:
                 finish();
                 break;

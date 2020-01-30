@@ -8,8 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,21 +23,10 @@ import com.cinqueterreriveria.common.PrefStore;
 import com.cinqueterreriveria.models.PaymentModel;
 
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import nl.garvelink.iban.CountryCodes;
-import nl.garvelink.iban.IBAN;
-import nl.garvelink.iban.IBANFields;
-import nl.garvelink.iban.IBANFieldsCompat;
-import nl.garvelink.iban.Modulo97;
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -26,7 +26,6 @@ import retrofit2.Response;
 
 public class HowToReachDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
-
     ImageView iv_how_to_reach_detail;
     TextView tv_how_to_reach_title,tv_app_bar_title;
     WebView tv_how_to_reach_description;

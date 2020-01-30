@@ -1,6 +1,5 @@
 package com.cinqueterreriveria.apis;
 
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

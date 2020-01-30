@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cinqueterreriveria.R;
 import com.cinqueterreriveria.models.SinglePlaceDetailModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HotelDetailAdapter extends RecyclerView.Adapter<HotelDetailAdapter.MyViewHolder> {

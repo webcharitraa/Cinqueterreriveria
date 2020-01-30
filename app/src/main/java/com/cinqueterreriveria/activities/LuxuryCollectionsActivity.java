@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.cinqueterreriveria.R;
 import com.cinqueterreriveria.adapters.LuxuryCollectionAdapter;
 import com.cinqueterreriveria.apis.ApiConstents;

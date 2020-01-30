@@ -46,14 +46,12 @@ public class ServiceDetailActivity extends AppCompatActivity implements View.OnC
     private  void initUis()
     {
         intent=getIntent();
-
         iv_services_detail=findViewById(R.id.iv_services_detail);
         tv_services_title=findViewById(R.id.tv_services_title);
         tv_services_description=findViewById(R.id.tv_services_description);
         tv_app_bar_title=findViewById(R.id.tv_app_bar_title);
         ll_back=findViewById(R.id.ll_back);
-
-         if (intent.getStringExtra("flag").equals("rental-agreement"))
+        if (intent.getStringExtra("flag").equals("rental-agreement"))
         {
             pdfAPi();
         } if (intent.getStringExtra("flag").equals("travelling-with-us"))
@@ -66,7 +64,6 @@ public class ServiceDetailActivity extends AppCompatActivity implements View.OnC
         {
             servicesDetailApi();
         }
-
         ll_back.setOnClickListener(this);
     }
 
@@ -74,7 +71,6 @@ public class ServiceDetailActivity extends AppCompatActivity implements View.OnC
     {
         Call<PDFModel> call=Rest.getRetrofit().pdfDetail(ApiConstents.SECRET_KEY,
                 intent.getStringExtra("flag"));
-
         call.enqueue(new Callback<PDFModel>() {
             @Override
             public void onResponse(Call<PDFModel> call, Response<PDFModel> response) {
@@ -88,7 +84,6 @@ public class ServiceDetailActivity extends AppCompatActivity implements View.OnC
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<PDFModel> call, Throwable t) {
 
@@ -100,7 +95,6 @@ public class ServiceDetailActivity extends AppCompatActivity implements View.OnC
     {
         Call<WhatToDoDetailModel> call= Rest.getRetrofit().servicesDetail(ApiConstents.SECRET_KEY,
                 intent.getStringExtra("flag"));
-
         dialog.progressDialog(context);
 
         call.enqueue(new Callback<WhatToDoDetailModel>() {
@@ -121,14 +115,12 @@ public class ServiceDetailActivity extends AppCompatActivity implements View.OnC
                         {
                             iv_services_detail.setVisibility(View.VISIBLE);
                             Glide.with(context).load(response.body().getDetail().getBannerImage()).apply(simpleOptions).into(iv_services_detail);
-
                         }
                         else {
                             iv_services_detail.setVisibility(View.GONE);
                         }
                         tv_services_title.setText(response.body().getDetail().getBannerTitle());
                         tv_services_description.loadDataWithBaseURL(null, response.body().getDetail().getContent(), "text/html", "utf-8", null);
-
                     }
                     else {
 

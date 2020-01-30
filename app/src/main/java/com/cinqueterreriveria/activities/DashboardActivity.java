@@ -18,7 +18,6 @@ import android.os.Handler;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -43,6 +42,7 @@ import com.cinqueterreriveria.adapters.BookingUniqueExperienceAdapter;
 import com.cinqueterreriveria.adapters.DashboardViewPagerAdapter;
 import com.cinqueterreriveria.adapters.ExperienceAdapter;
 import com.cinqueterreriveria.adapters.NonSwipeableViewPager;
+import com.cinqueterreriveria.adapters.NothingSelectedSpinnerAdapter;
 import com.cinqueterreriveria.adapters.PlacesAdapter;
 import com.cinqueterreriveria.adapters.ServicesAdapter;
 import com.cinqueterreriveria.adapters.WhatToDoAdapter;
@@ -103,14 +103,14 @@ public class DashboardActivity extends AppCompatActivity
     public static List<DashboardModel.Blog> blogsList;
     public static List<DashboardModel.Video> videosList;
     public static List<DashboardModel.HowReach> howReachList;
-    String[] child = {"Child", "1 ", "2 ", "3 ", "4 ", "5 ","6","7","8","9","10","11","12"};
-    String[] adult = {"Adult", "1 ", "2 ", "3 ", "4 ", "5 ","6","7","8","9","10","11","12"};
+    String[] child = {"1 ", "2 ", "3 ", "4 ", "5 ","6","7","8","9","10","11","12"};
+    String[] adult = {"1 ", "2 ", "3 ", "4 ", "5 ","6","7","8","9","10","11","12"};
     String[] location = {"Monterosso", "Vernazza", "Manarola", "La Spezia"};
     List<String> places = new ArrayList<>();
     Spinner search_place_spinner, adult_spinner, child_spinner;
     LinearLayout ll_search_box, rl_dashboard_appbar, ll_lay;
     SupportMapFragment mapFragment;
-    int locationId;
+    int locationId= 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -225,38 +225,49 @@ public class DashboardActivity extends AppCompatActivity
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_search:
-                adultcount = adult_spinner.getSelectedItem().toString();
-                childcount = child_spinner.getSelectedItem().toString();
+                if (adult_spinner.getSelectedItem() == null) {
+                   adultcount="";
+                }
+                else {
+                    adultcount = adult_spinner.getSelectedItem().toString();
 
-                if (search_place_spinner.getSelectedItem().toString().equals("Monterosso")) {
-                    locationId = 3887;
                 }
-                if (search_place_spinner.getSelectedItem().toString().equals("Vernazza")) {
-                    locationId = 21672;
-                }
-                if (search_place_spinner.getSelectedItem().toString().equals("Manarola")) {
-                    locationId = 25302;
-                }
-                if (search_place_spinner.getSelectedItem().toString().equals("La Spezia")) {
-                    locationId = 3701;
-                }
-
-                if (adult_spinner.getSelectedItem().toString().equals("Adult")) {
-                    adultcount = "";
-                }
-                if (child_spinner.getSelectedItem().toString().equals("Child")) {
+                if (child_spinner.getSelectedItem() == null) {
                     childcount = "";
                 }
-                Log.d("TAG", String.valueOf(locationId));
-                context.startActivity(new Intent(context, PlaceListActivity.class).
-                        putExtra("flag", "search").
-                        putExtra("place_name", "").
-                        putExtra("locationId", String.valueOf(locationId)).
-                        putExtra("DateFron", tv_clock_in.getText().toString()).
-                        putExtra("DateTo", tv_dashboard_check_out.getText().toString())
-                        .putExtra("children", childcount).
-                                putExtra("adults", adultcount));
+                else {
+                    childcount = child_spinner.getSelectedItem().toString();
+                }
 
+                Log.d("TAG", String.valueOf(locationId));
+
+                if (search_place_spinner.getSelectedItem() == null)
+                {
+                    Toast.makeText(context, "please select atleast one location", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    if (search_place_spinner.getSelectedItem().toString().equals("Monterosso")) {
+                        locationId = 3887;
+                    }
+                    if (search_place_spinner.getSelectedItem().toString().equals("Vernazza")) {
+                        locationId = 21672;
+                    }
+                    if (search_place_spinner.getSelectedItem().toString().equals("Manarola")) {
+                        locationId = 25302;
+                    }
+                    if (search_place_spinner.getSelectedItem().toString().equals("La Spezia")) {
+                        locationId = 3701;
+                    }
+                    context.startActivity(new Intent(context, PlaceListActivity.class).
+                            putExtra("flag", "search").
+                            putExtra("place_name", "").
+                            putExtra("locationId", String.valueOf(locationId)).
+                            putExtra("DateFron", tv_clock_in.getText().toString()).
+                            putExtra("DateTo", tv_dashboard_check_out.getText().toString())
+                            .putExtra("children", childcount).
+                                    putExtra("adults", adultcount));
+                }
                 break;
             case R.id.iv_search:
                 nested_scroll.fullScroll(ScrollView.FOCUS_UP);
@@ -594,15 +605,36 @@ public class DashboardActivity extends AppCompatActivity
                         ArrayAdapter<String> a = new ArrayAdapter<String>(context, R.layout.item_search_spinner, location);
                         search_place_spinner.setPrompt("Select");
                         search_place_spinner.setPopupBackgroundDrawable(getResources().getDrawable(R.drawable.solid_orange_rectangle));
-                        search_place_spinner.setAdapter(a);
+
+                        search_place_spinner.setAdapter(
+                                new NothingSelectedSpinnerAdapter(
+                                        a,
+                                        R.layout.search_notselected,
+                                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                                        context));
+                       // search_place_spinner.setAdapter(a);
                         ArrayAdapter<String> a1 = new ArrayAdapter<String>(context, R.layout.item_search_spinner, adult);
                         adult_spinner.setPrompt("Select");
+
+
                         adult_spinner.setPopupBackgroundDrawable(getResources().getDrawable(R.drawable.solid_orange_rectangle));
-                        adult_spinner.setAdapter(a1);
+                        adult_spinner.setAdapter(
+                                new NothingSelectedSpinnerAdapter(
+                                        a1,
+                                        R.layout.item_search_spinner,
+                                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                                        context));
+
+                       // adult_spinner.setAdapter(a1);
                         ArrayAdapter<String> a2 = new ArrayAdapter<String>(context, R.layout.item_search_spinner, child);
                         child_spinner.setPrompt("Select");
                         child_spinner.setPopupBackgroundDrawable(getResources().getDrawable(R.drawable.solid_orange_rectangle));
-                        child_spinner.setAdapter(a2);
+                        child_spinner.setAdapter(
+                                new NothingSelectedSpinnerAdapter(
+                                        a2,
+                                        R.layout.item_layout_child,
+                                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                                        context));
 
                         lat = Double.parseDouble(response.body().getLat());
                         lng = Double.parseDouble(response.body().getLong());

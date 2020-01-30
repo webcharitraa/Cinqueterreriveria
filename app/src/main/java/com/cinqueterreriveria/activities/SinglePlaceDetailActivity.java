@@ -44,6 +44,7 @@ import com.cinqueterreriveria.R;
 import com.cinqueterreriveria.adapters.CollectionAdapter;
 import com.cinqueterreriveria.adapters.CustomPagerFoeSinglePlace;
 import com.cinqueterreriveria.adapters.HotelDetailAdapter;
+import com.cinqueterreriveria.adapters.NothingSelectedSpinnerAdapter;
 import com.cinqueterreriveria.adapters.PlaceDetailViewPagerAdapter;
 import com.cinqueterreriveria.adapters.SinglePlaceImageViewPagerAdapter;
 import com.cinqueterreriveria.apis.ApiConstents;
@@ -112,7 +113,6 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements
     String status = "check_in", property_name;
     public static String florePlanImage;
     public static JSONArray requiredDataArray;
-
     int value;
     CalendarView calender_filter;
     TransparentDialog transparentDialog = new TransparentDialog();
@@ -200,7 +200,6 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
-
             @Override
             public void onPageSelected(int position) {
                 for (int i = 0; i < ivArrayDotsPager.length; i++) {
@@ -208,7 +207,6 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements
                 }
                 ivArrayDotsPager[position].setImageResource(R.drawable.selected_dot);
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {
 
@@ -217,12 +215,9 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements
 
         final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
         place_detail_viewpager.setPageMargin(pageMargin);
-
         place_detail_tabs.setupWithViewPager(place_detail_viewpager);
-
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         fab.setOnClickListener(this);
-
         singledetailAPi();
     }
 
@@ -354,15 +349,26 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements
                 final TextView et_check_in = view2.findViewById(R.id.et_check_in);
                 final TextView tv_check_out = view2.findViewById(R.id.tv_check_out);
                 builder2.setView(view2);
+
                 ArrayAdapter<String> a = new ArrayAdapter<String>(this, R.layout.item_spinner, mStringArray);
-                //deal_group_spinner.setPrompt("Select");
-                deal_group_spinner.setAdapter(a);
+              /*  deal_group_spinner.setPrompt("Select");
+                deal_group_spinner.setAdapter(a);*/
 
-                calender_filter.setMinDate(System.currentTimeMillis() - 1000);
+               // a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                deal_group_spinner.setPrompt("Select");
 
+                deal_group_spinner.setAdapter(
+                        new NothingSelectedSpinnerAdapter(
+                                a,
+                                R.layout.contact_spinner_row_nothing_selected,
+                                // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                                this));
+
+               // calender_filter.setMinDate(System.currentTimeMillis() + (1000 * 60 * 60 * 24 * 6));
                 calender_filter.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                     @Override
                     public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
+
                         month = month + 1;
                         date1 = day + "/" + month + "/" + year;
                         DateFormat outputFormat = new SimpleDateFormat("YYYY-MM-dd", Locale.US);
@@ -400,16 +406,10 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements
                     @Override
                     public void onClick(View view) {
                         setMargins(rl_dia, 0, 55, 0, 0);
-                        // calender_filter.setMinDate(System.currentTimeMillis() - 1000);
 
-                       /* LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                LinearLayout.LayoutParams.WRAP_CONTENT,
-                                LinearLayout.LayoutParams.WRAP_CONTENT
-                        );
-                        params.setMargins(0, 45, 0, 0);
-                        rl_dia.setLayoutParams(params);*/
                         if (ll_calender.getVisibility() == View.GONE) {
                             ll_calender.setVisibility(View.VISIBLE);
+                            calender_filter.setMinDate(System.currentTimeMillis() - 1000);
                             status = "check_in";
                         }
                     }
@@ -418,16 +418,10 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements
                     @Override
                     public void onClick(View view) {
                         setMargins(rl_dia, 0, 55, 0, 0);
-                        // calender_filter.setMaxDate(System.currentTimeMillis() + (1000 * 60 * 60 * 24 * 6));
 
-                       /* LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                LinearLayout.LayoutParams.WRAP_CONTENT,
-                                LinearLayout.LayoutParams.WRAP_CONTENT
-                        );
-                        params.setMargins(0, 45, 0, 0);
-                        rl_dia.setLayoutParams(params);*/
                         if (ll_calender.getVisibility() == View.GONE) {
                             ll_calender.setVisibility(View.VISIBLE);
+                            calender_filter.setMinDate(System.currentTimeMillis() + (1000 * 60 * 60 * 24 * 6));
                             status = "check_out";
 
                         }
@@ -449,10 +443,15 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements
                         } else if (tv_check_out.getText().toString().isEmpty()) {
                             Toast.makeText(SinglePlaceDetailActivity.this, "Please fill Check out time", Toast.LENGTH_SHORT).show();
 
-                        } else {
-                            searchDealNowAPi(et_check_in.getText().toString(),
-                                    tv_check_out.getText().toString(), deal_group_spinner.getSelectedItem().toString());
+                        } else if (deal_group_spinner.getSelectedItem() == null){
+                            Toast.makeText(SinglePlaceDetailActivity.this, "Please select person", Toast.LENGTH_SHORT).show();
+
                         }
+                           else
+                            {
+                                searchDealNowAPi(et_check_in.getText().toString(),
+                                        tv_check_out.getText().toString(), deal_group_spinner.getSelectedItem().toString());
+                            }
                     }
                 });
 
@@ -531,9 +530,7 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements
                         propertyRates.addAll(response.body().getDetail().getPropertyRates());
                         String our_rule = response.body().getDetail().getOurRules().toString();
                         try {
-
                             object = new JSONObject();
-
                             requiredDataArray = new JSONArray();
                             JSONObject data = new JSONObject();
                             data.put("Minimum Stay", response.body().getDetail().getOurRules().getMinimumStay());
@@ -552,9 +549,7 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements
                         place_detail_viewpager.setAdapter(new PlaceDetailViewPagerAdapter(context, getSupportFragmentManager()));
 
                         //ratingBar.setRating(Float.parseFloat(intent.getStringExtra("rating")));
-
                         makeTextViewResizable(tv_description, 5, "Read More", true);
-
                     } else {
                         Toast.makeText(SinglePlaceDetailActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -568,7 +563,7 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements
         });
     }
 
-    // search Deal APi is here
+    //search Deal APi is here
     private void searchDealNowAPi(final String et_check_in, final String check_out, final String no_of_persons) {
         Call<SearchDealModel> call = Rest.getRetrofit().seachDealNow(ApiConstents.SECRET_KEY,
                 et_check_in, check_out, no_of_persons, property_id, product_id);
@@ -642,7 +637,6 @@ public class SinglePlaceDetailActivity extends AppCompatActivity implements
                         });
                         dialog1 = builder2.create();
                         dialog1.setCancelable(true);
-
                         dialog1.show();
                     } else {
                         transparentDialog.stopProgressDialog();

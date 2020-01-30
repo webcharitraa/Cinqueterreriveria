@@ -6,58 +6,52 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class PlaceListModel {
+    @SerializedName("success")
+    @Expose
+    private Boolean success;
+    @SerializedName("locationProperties")
+    @Expose
+    private List<LocationProperty> locationProperties = null;
+    @SerializedName("propertyType")
+    @Expose
+    private List<PropertyType> propertyType = null;
+    @SerializedName("message")
+    @Expose
+    private String message;
 
+    public Boolean getSuccess() {
+        return success;
+    }
 
-        @SerializedName("success")
-        @Expose
-        private Boolean success;
-        @SerializedName("locationProperties")
-        @Expose
-        private List<LocationProperty> locationProperties = null;
-        @SerializedName("propertyType")
-        @Expose
-        private List<PropertyType> propertyType = null;
-        @SerializedName("message")
-        @Expose
-        private String message;
+    public void setSuccess(Boolean success) {
+        this.success = success;
+    }
 
-        public Boolean getSuccess() {
-            return success;
-        }
+    public List<LocationProperty> getLocationProperties() {
+        return locationProperties;
+    }
 
-        public void setSuccess(Boolean success) {
-            this.success = success;
-        }
+    public void setLocationProperties(List<LocationProperty> locationProperties) {
+        this.locationProperties = locationProperties;
+    }
 
-        public List<LocationProperty> getLocationProperties() {
-            return locationProperties;
-        }
+    public List<PropertyType> getPropertyType() {
+        return propertyType;
+    }
 
-        public void setLocationProperties(List<LocationProperty> locationProperties) {
-            this.locationProperties = locationProperties;
-        }
+    public void setPropertyType(List<PropertyType> propertyType) {
+        this.propertyType = propertyType;
+    }
 
-        public List<PropertyType> getPropertyType() {
-            return propertyType;
-        }
+    public String getMessage() {
+        return message;
+    }
 
-        public void setPropertyType(List<PropertyType> propertyType) {
-            this.propertyType = propertyType;
-        }
-
-        public String getMessage() {
-            return message;
-        }
-
-        public void setMessage(String message) {
-            this.message = message;
-        }
-
-
-
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public class Icons {
-
         @SerializedName("guests")
         @Expose
         private String guests;
@@ -91,11 +85,9 @@ public class PlaceListModel {
         public void setBathrooms(Integer bathrooms) {
             this.bathrooms = bathrooms;
         }
-
     }
 
     public class LocationProperty {
-
         @SerializedName("slug")
         @Expose
         private String slug;

@@ -24,11 +24,9 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.MyVi
     Context context;
     List<PlaceListModel.LocationProperty> locationProperties;
 
-
     public PlaceListAdapter(Context context, List<PlaceListModel.LocationProperty> locationProperties) {
         this.context = context;
         this.locationProperties = locationProperties;
-
     }
 
     @Override
@@ -39,10 +37,8 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.MyVi
         return new MyViewHolder(itemView);
     }
 
-
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-
         holder.cv_place_list.setBackgroundResource(R.drawable.solid_white);
         holder.tv_place_list_title.setText(locationProperties.get(position).getTitle());
         holder.tv_bathrooms.setText("Bathrooms("+locationProperties.get(position).getIcons().getBathrooms()+")");
@@ -60,8 +56,6 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.MyVi
                 .putExtra("slug",locationProperties.get(position).getSlug()));
             }
         });
-
-
     }
 
     @Override

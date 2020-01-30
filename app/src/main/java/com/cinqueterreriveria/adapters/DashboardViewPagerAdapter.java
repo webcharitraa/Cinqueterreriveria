@@ -1,7 +1,6 @@
 package com.cinqueterreriveria.adapters;
 
 import android.content.Context;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

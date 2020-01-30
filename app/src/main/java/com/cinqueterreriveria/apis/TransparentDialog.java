@@ -22,7 +22,6 @@ import com.cinqueterreriveria.R;
 public class TransparentDialog {
     public static Dialog dialog;
 
-
     @SuppressLint("RestrictedApi")
     public static void progressDialog(Context context) {
 

@@ -50,7 +50,7 @@ public class PlaceListActivity extends AppCompatActivity implements View.OnClick
     String[] reservation = {"All",
             "On Request",
             "Instant Bookable"};
-    String[] pricing = {"All",
+    String[] pricing = {
             "€100 - €200",
             "€200 - €300",
             "€300 - €400",
@@ -58,7 +58,8 @@ public class PlaceListActivity extends AppCompatActivity implements View.OnClick
             "€500 - €600",
             "€600 - €700",
             "€700 - €800",
-            "€800 - €900"};
+            "€800 - €900"
+    };
     ShimmerFrameLayout shimmer_list_container;
     DrawerLayout place_list_drawer;
     TransparentDialog dialog = new TransparentDialog();
@@ -197,7 +198,6 @@ public class PlaceListActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void placeListApi() {
-
         shimmer_list_container.startShimmerAnimation();
 
         Call<PlaceListModel> call = Rest.getRetrofit().placeList(ApiConstents.SECRET_KEY,
@@ -212,7 +212,6 @@ public class PlaceListActivity extends AppCompatActivity implements View.OnClick
                 // dialog.stopProgressDialog();
                 if (response.isSuccessful()) {
                     if (response.body().getSuccess() == true) {
-
                         if (response.body().getLocationProperties().size() > 0) {
                             rv_place.setVisibility(View.VISIBLE);
 
@@ -233,7 +232,6 @@ public class PlaceListActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onFailure(Call<PlaceListModel> call, Throwable t) {
                 dialog.stopProgressDialog();
-
             }
         });
     }
@@ -268,7 +266,6 @@ public class PlaceListActivity extends AppCompatActivity implements View.OnClick
                             tv_no_data.setVisibility(View.VISIBLE);
                             rv_place.setVisibility(View.GONE);
                         }
-
                     } else {
 
                     }
@@ -278,7 +275,6 @@ public class PlaceListActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onFailure(Call<HomeSearchModel> call, Throwable t) {
                 dialog.stopProgressDialog();
-
             }
         });
     }

@@ -86,7 +86,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-
     void loginApi() {
         Call<RegisterModel> call = Rest.getRetrofit().login(ApiConstents.SECRET_KEY,
                 login_email.getText().toString(), login_password.getText().toString());

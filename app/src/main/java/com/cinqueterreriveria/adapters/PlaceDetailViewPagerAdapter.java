@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.cinqueterreriveria.fragments.AmenitiesFragment;
-import com.cinqueterreriveria.fragments.DashBoardReachUsFragment;
 
 import com.cinqueterreriveria.fragments.ExtraChargesFragment;
 import com.cinqueterreriveria.fragments.FloorPlanFragment;
